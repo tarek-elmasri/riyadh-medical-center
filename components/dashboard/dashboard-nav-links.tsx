@@ -9,7 +9,7 @@ const DashboardNavLinks = () => {
   const pathname = usePathname();
   const { data: session } = useSession();
   const isAdmin = session?.user.isAdmin;
-
+  console.log(session);
   const routes = [
     {
       href: "/dashboard",
@@ -40,9 +40,9 @@ const DashboardNavLinks = () => {
       active: pathname === "/panel",
     },
     {
-      href: "/users",
+      href: "/dashboard/users",
       label: "الموظفين",
-      active: pathname === "/users",
+      active: pathname === "/dashboard/users",
     },
   ];
 
