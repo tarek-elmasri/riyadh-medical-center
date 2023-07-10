@@ -52,36 +52,31 @@ const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    jwt: async ({ token, user }) => {
+    session: ({ token, session }) => {
+      if (token) {
+        session.user.id = token.id;
+        session.user.email = token.email;
+        session.user.image = token.picture;
+        session.user.name = token.name;
+        session.user.isAdmin = token.isAdmin;
+      }
+      return session;
+    },
+    jwt: async ({ token }) => {
       const dbUser = await prismadb.user.findFirst({
-        where: {
-          id: token.id,
-        },
+        where: { email: token.email! },
       });
 
       if (!dbUser) {
-        if (user) {
-          token.id = user.id;
-        }
         return token;
       }
 
       return {
         id: dbUser.id,
         email: dbUser.email,
-        name: dbUser.name,
-        picture: undefined,
         isAdmin: dbUser.isAdmin,
+        name: dbUser.name,
       };
-    },
-    session: ({ token, session }) => {
-      if (token) {
-        (session.user.id = token.id), (session.user.email = token.email);
-        session.user.image = token.picture;
-        session.user.name = token.name;
-        session.user.isAdmin = token.isAdmin;
-      }
-      return session;
     },
   },
   debug: process.env.NODE_ENV === "development",
