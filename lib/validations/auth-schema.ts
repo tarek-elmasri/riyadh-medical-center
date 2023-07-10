@@ -3,7 +3,7 @@ import * as z from "zod";
 export const newUserSchema = z.object({
   name: z.string().min(1),
   email: z.string().email({ message: "الرجاء ادخال بريد الكتروني صحيح" }),
-  password: z.string().min(6),
+  password: z.string().min(6, { message: "كلمة المرور يجب الا تقل عن 6 احرف" }),
   isAdmin: z.boolean().default(false).optional(),
 });
 
@@ -22,6 +22,6 @@ export const updateUserSchema = z.object({
   isAdmin: z.boolean().default(false).optional(),
 });
 
-export type UpdateUserSchema = z.infer<typeof updateUserSchema>;
+export type UpdateUserForm = z.infer<typeof updateUserSchema>;
 export type NewUserForm = z.infer<typeof newUserSchema>;
 export type SigninForm = Omit<NewUserForm, "name" | "isAdmin">;

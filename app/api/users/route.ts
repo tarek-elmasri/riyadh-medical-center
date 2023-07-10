@@ -1,43 +1,10 @@
 import prismadb from "@/lib/prismadb";
+import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { newUserSchema } from "@/lib/validations/auth-schema";
 import { ZodError } from "zod";
-import {
-  badParameters,
-  serverError,
-  unAuthenticatedError,
-  unAuthorizedError,
-} from "../errors";
-
-export const GET = async (_req: Request) => {
-  try {
-    const currentUser = await getCurrentUser();
-    if (!currentUser) return unAuthenticatedError();
-    if (!currentUser.isAdmin) return unAuthorizedError();
-
-    const users = await prismadb.user.findMany({
-      where: {
-        id: {
-          not: currentUser.id,
-        },
-      },
-      select: {
-        id: true,
-        isAdmin: true,
-        createdAt: true,
-        updatedAt: true,
-        name: true,
-        email: true,
-      },
-    });
-
-    return NextResponse.json(users);
-  } catch (error) {
-    console.log(error, "GET_USERS_ERROR");
-    return serverError();
-  }
-};
+import { badParameters, serverError } from "../errors";
 
 const POST = async (req: Request) => {
   try {
@@ -56,7 +23,7 @@ const POST = async (req: Request) => {
       data: {
         name,
         email,
-        password: password + SALT,
+        password: await bcrypt.hash(password + SALT, 12),
         isAdmin,
       },
     });

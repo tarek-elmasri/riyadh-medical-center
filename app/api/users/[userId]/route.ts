@@ -2,7 +2,7 @@ import prismadb from "@/lib/prismadb";
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import { newUserSchema, updateUserSchema } from "@/lib/validations/auth-schema";
+import { updateUserSchema } from "@/lib/validations/auth-schema";
 import { ZodError } from "zod";
 import {
   badParameters,
@@ -10,40 +10,6 @@ import {
   unAuthenticatedError,
   unAuthorizedError,
 } from "../../errors";
-
-export const GET = async (
-  _req: Request,
-  { params }: { params: { userId: string } }
-) => {
-  try {
-    const currentUser = await getCurrentUser();
-    if (!currentUser) return unAuthenticatedError();
-
-    // check whether same user or admin user
-    if (currentUser.id !== params.userId || !currentUser.isAdmin) {
-      return unAuthorizedError();
-    }
-
-    const user = await prismadb.user.findUnique({
-      where: {
-        id: currentUser.id,
-      },
-      select: {
-        id: true,
-        isAdmin: true,
-        createdAt: true,
-        updatedAt: true,
-        name: true,
-        email: true,
-      },
-    });
-
-    return NextResponse.json(user);
-  } catch (error) {
-    console.log(error, "GET_USERS_ERROR");
-    return serverError();
-  }
-};
 
 export const PATCH = async (
   req: Request,
@@ -54,8 +20,10 @@ export const PATCH = async (
     if (!currentUser) return unAuthenticatedError();
 
     // check whether same user or admin user
-    if (currentUser.id !== params.userId || !currentUser.isAdmin) {
-      return unAuthorizedError();
+    if (currentUser.id !== params.userId) {
+      if (!currentUser.isAdmin) {
+        return unAuthorizedError();
+      }
     }
 
     const json = await req.json();
@@ -69,7 +37,7 @@ export const PATCH = async (
 
     const user = await prismadb.user.update({
       where: {
-        id: currentUser.id,
+        id: params.userId,
       },
       data: {
         ...body,
@@ -91,6 +59,32 @@ export const PATCH = async (
   } catch (error) {
     console.log(error, "PATCH_USER_ERROR");
     if (error instanceof ZodError) return badParameters(error);
+    return serverError();
+  }
+};
+
+export const DELETE = async (
+  req: Request,
+  { params }: { params: { userId: string } }
+) => {
+  try {
+    const currentUser = await getCurrentUser();
+    if (!currentUser) return unAuthenticatedError();
+
+    // check whether same user or admin user
+    if (!currentUser.isAdmin) {
+      return unAuthorizedError();
+    }
+
+    const user = await prismadb.user.delete({
+      where: {
+        id: params.userId,
+      },
+    });
+
+    return NextResponse.json(user);
+  } catch (error) {
+    console.log(error, "DELETE_USER_ERROR");
     return serverError();
   }
 };
