@@ -144,7 +144,7 @@ const DoctorForm: React.FC<DoctorFormProps> = ({
         {...(VARIANT === "UPDATE" && { onDelete: open })}
       />
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="mb-24" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="imageUrl"
@@ -230,7 +230,7 @@ const DoctorForm: React.FC<DoctorFormProps> = ({
               control={form.control}
               name="scheduleIds"
               render={({ field }) => (
-                <FormItem className="flex flex-col">
+                <FormItem className="flex flex-col mt-6">
                   <FormLabel>المواعيد</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
