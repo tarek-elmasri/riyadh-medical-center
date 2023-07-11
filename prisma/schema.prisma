@@ -37,11 +37,24 @@ model Doctor {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  clinicId     String
-  clinic       Clinic        @relation(fields: [clinicId], references: [id])
-  scheduleId   String
-  schedule     Schedule      @relation(fields: [scheduleId], references: [id])
-  reservations Reservation[]
+  clinicId             String
+  clinic               Clinic                @relation(fields: [clinicId], references: [id])
+  schedules            Schedule[]
+  // reservations Reservation[]
+  scheduleAppointments ScheduleAppointment[]
+}
+
+model ScheduleAppointment {
+  id         String   @id @default(uuid())
+  date       DateTime
+  doctorId   String
+  doctor     Doctor   @relation(fields: [doctorId], references: [id])
+  scheduleId String
+  schedule   Schedule @relation(fields: [scheduleId], references: [id])
+  patientId  String
+  patient    Patient  @relation(fields: [patientId], references: [id])
+
+  @@unique([doctorId, patientId, scheduleId])
 }
 
 model Schedule {
@@ -51,20 +64,16 @@ model Schedule {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  doctors      Doctor[]
-  reservations Reservation[]
+  doctors              Doctor[]
+  scheduleAppointments ScheduleAppointment[]
 }
 
-model Reservation {
+model Patient {
   id          String   @id @default(uuid())
-  date        DateTime
   patientName String
-  phoneNo     String
+  phoneNo     String   @unique
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  scheduleId String
-  schedule   Schedule @relation(fields: [scheduleId], references: [id])
-  doctorId   String
-  doctor     Doctor   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  scheduleAppointments ScheduleAppointment[]
 }
