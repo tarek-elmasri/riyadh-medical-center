@@ -74,6 +74,12 @@ body,
     --ring: 217.2 32.6% 17.5%;
   }
 }
+
+@media screen and (min-width: 770px){
+  .navbar-triangle{
+    clip-path: polygon(100% 0%,40% 0%, 0% 100%, 100% 100%)
+  }
+}
  
 @layer base {
   * {

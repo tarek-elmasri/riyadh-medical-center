@@ -4,13 +4,20 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Button } from "@/components/ui//button";
 import { X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface DrawerProps {
   isOpen: boolean;
   onClose: () => void;
+  className?: string;
   children: React.ReactNode;
 }
-const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, children }) => {
+const Drawer: React.FC<DrawerProps> = ({
+  isOpen,
+  onClose,
+  children,
+  className,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -32,7 +39,10 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, children }) => {
         {/* transition content */}
         <Transition.Child
           as={"div"}
-          className="transition duration-500 fixed z-50 inset-y-0 right-0 flex flex-col w-full h-full bg-white border-l border-neutral-400 overflow-y-auto max-w-xs"
+          className={cn(
+            "transition duration-500 fixed z-50 inset-y-0 right-0 flex flex-col w-full h-full bg-white border-l border-neutral-400 overflow-y-auto max-w-xs",
+            className
+          )}
           enter="ease-in-out"
           enterFrom="translate-x-full"
           enterTo="translate-x-0"
