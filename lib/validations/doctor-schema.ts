@@ -7,6 +7,7 @@ export const doctorSchema = z.object({
   imageUrl: z
     .string({ required_error: "الصورة مطلوبة" })
     .min(1, { message: "الصورة مطلوبة" }),
+  scheduleIds: z.array(z.string()).optional().default([]),
 });
 
 export type DoctorFormType = z.infer<typeof doctorSchema>;

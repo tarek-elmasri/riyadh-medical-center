@@ -14,7 +14,7 @@ export const POST = async (req: Request) => {
   try {
     const json = await req.json();
     const body = doctorSchema.parse(json);
-    const { name, imageUrl, title, clinicId } = body;
+    const { name, imageUrl, title, clinicId, scheduleIds } = body;
 
     const currentUser = await getCurrentUser();
     if (!currentUser) {
@@ -31,6 +31,9 @@ export const POST = async (req: Request) => {
         title,
         clinicId,
         imageUrl,
+        schedules: {
+          connect: [...scheduleIds.map((id) => ({ id }))],
+        },
       },
     });
 

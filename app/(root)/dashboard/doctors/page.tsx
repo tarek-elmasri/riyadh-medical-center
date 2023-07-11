@@ -3,8 +3,7 @@ import { DataTable } from "@/components/ui/DataTable";
 import { columns, filterKeys } from "./Columns";
 import { getDoctors } from "@/app/actions/getDoctors";
 
-export const revalidate = 0;
-
+export const dynamic = "force-dynamic";
 const DoctorsPage = async () => {
   const doctors = await getDoctors();
 

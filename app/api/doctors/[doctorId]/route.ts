@@ -17,7 +17,7 @@ export const PATCH = async (
   try {
     const json = await req.json();
     const body = doctorSchema.parse(json);
-    const { name, title, clinicId, imageUrl } = body;
+    const { name, title, clinicId, imageUrl, scheduleIds } = body;
 
     const currentUser = await getCurrentUser();
     if (!currentUser) {
@@ -28,6 +28,19 @@ export const PATCH = async (
       return unAuthorizedError();
     }
 
+    await prismadb.doctor.update({
+      where: {
+        id: params.doctorId,
+      },
+      data: {
+        schedules: {
+          disconnect: await prismadb.schedule.findMany({
+            select: { id: true },
+          }),
+        },
+      },
+    });
+
     const doctor = await prismadb.doctor.update({
       where: {
         id: params.doctorId,
@@ -37,6 +50,9 @@ export const PATCH = async (
         imageUrl,
         title,
         clinicId,
+        schedules: {
+          connect: [...scheduleIds.map((id) => ({ id }))],
+        },
       },
     });
 
