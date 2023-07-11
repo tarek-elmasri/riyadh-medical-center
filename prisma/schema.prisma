@@ -37,14 +37,13 @@ model Doctor {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  clinicId             String
-  clinic               Clinic                @relation(fields: [clinicId], references: [id])
-  schedules            Schedule[]
-  // reservations Reservation[]
-  scheduleAppointments ScheduleAppointment[]
+  clinicId     String
+  clinic       Clinic        @relation(fields: [clinicId], references: [id])
+  schedules    Schedule[]
+  appointments Appointment[]
 }
 
-model ScheduleAppointment {
+model Appointment {
   id         String   @id @default(uuid())
   date       DateTime
   doctorId   String
@@ -54,7 +53,7 @@ model ScheduleAppointment {
   patientId  String
   patient    Patient  @relation(fields: [patientId], references: [id])
 
-  @@unique([doctorId, patientId, scheduleId])
+  @@unique([scheduleId, date, doctorId])
 }
 
 model Schedule {
@@ -64,8 +63,8 @@ model Schedule {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  doctors              Doctor[]
-  scheduleAppointments ScheduleAppointment[]
+  doctors      Doctor[]
+  appointments Appointment[]
 }
 
 model Patient {
@@ -75,5 +74,5 @@ model Patient {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  scheduleAppointments ScheduleAppointment[]
+  appointments Appointment[]
 }
