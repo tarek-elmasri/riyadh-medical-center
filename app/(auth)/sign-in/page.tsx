@@ -17,7 +17,7 @@ const AuthenticationPage = async () => {
           مستوصف الطبي الحديث
         </h1>
         <Separator className="my-6" />
-        <AuthenticationForm variant="SIGNIN" />
+        <AuthenticationForm />
       </div>
     </div>
   );
