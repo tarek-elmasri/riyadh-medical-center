@@ -107,7 +107,6 @@ const DoctorForm: React.FC<DoctorFormProps> = ({
 
       window.location.assign("/dashboard/doctors");
     } catch (error) {
-      console.log((error as Error).message);
       toast.error("حدث خطأ. الرجاء المحاولة مرة اخرى");
     } finally {
       setIsLoading(false);

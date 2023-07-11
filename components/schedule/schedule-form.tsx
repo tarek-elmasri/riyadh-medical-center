@@ -37,7 +37,7 @@ const ScheduleForm = () => {
 
       await axios.post("/api/schedules", data);
       toast.success("تم حفظ الموعد بنجاح");
-      router.push("/dashboard/schedules");
+      window.location.assign("/dashboard/schedules");
     } catch (error) {
       toast.error("حدث خطأ. الرجاء المحاولة مرة اخرى");
     } finally {

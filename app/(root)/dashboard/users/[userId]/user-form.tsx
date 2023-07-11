@@ -41,7 +41,7 @@ const UserForm: React.FC<UserFormProps> = ({ user }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const defaultValues = user
-    ? user
+    ? { ...user, password: "" }
     : { name: "", email: "", password: "", isAdmin: false };
   const form = useForm<UserFormType>({
     resolver: zodResolver(user ? updateUserSchema : newUserSchema),
@@ -59,7 +59,7 @@ const UserForm: React.FC<UserFormProps> = ({ user }) => {
         toast.success("تم انشاء الموظف بنجاح");
       }
 
-      router.push(isAdmin ? "/dashboard/users" : "/dashboard");
+      window.location.assign(isAdmin ? "/dashboard/users" : "/dashboard");
     } catch (error) {
       toast.error("حدث خطأ. الرجاء المحاولة مرة اخرى");
     } finally {

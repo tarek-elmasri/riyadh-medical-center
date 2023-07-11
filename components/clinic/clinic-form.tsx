@@ -48,7 +48,7 @@ const ClinicForm: React.FC<ClinicFormProps> = ({ clinic }) => {
         toast.success("تم انشاء العيادة بنجاح");
       }
 
-      router.push("/dashboard/clinics");
+      window.location.assign("/dashboard/clinics");
     } catch (error) {
       toast.error("حدث خطأ. الرجاء المحاولة مرة اخرى");
     } finally {
