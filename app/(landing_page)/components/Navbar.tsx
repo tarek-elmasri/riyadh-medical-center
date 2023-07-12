@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="h-24  bg-slate-800 shadow-md">
       <div className="flex h-full justify-between md:justify-start items-center">
-        <div className="navbar-triangle px-6 md:px-12 md:w-64 h-full  flex items-center md:bg-sky-700">
+        <div className="navbar-triangle h-full w-1/3 pr-4 flex items-center md:justify-center md:bg-sky-700">
           {/* mobile devices toggle menu */}
           <div className="md:hidden">
             <MobileNav />

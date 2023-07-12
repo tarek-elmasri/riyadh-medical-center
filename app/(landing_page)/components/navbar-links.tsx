@@ -20,8 +20,8 @@ const NavbarLinks = () => {
             <Link
               href={route.href}
               className={cn(
-                "font-bold text-md hover:text-sky-400 focus-within:outline-sky-400 outline-offset-8",
-                route.active ? "text-sky-100 " : "text-sky-400 "
+                "font-bold text-xl hover:text-sky-400 focus-within:outline-sky-400 outline-offset-8",
+                route.active ? "text-sky-400 " : "text-sky-100 "
               )}
             >
               {route.label}

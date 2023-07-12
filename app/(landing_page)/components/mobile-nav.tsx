@@ -2,6 +2,7 @@
 
 import Drawer from "@/components/ui/drawer";
 import useRoutes from "@/hooks/useRoutes";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import Link from "next/link";
@@ -13,9 +14,12 @@ const MobileNav = () => {
 
   return (
     <>
-      <Menu className="w-6 h-6 text-white ml-6" onClick={() => setOpen(true)} />
+      <Menu
+        className="w-6 h-6 text-white ml-6 cursor-pointer"
+        onClick={() => setOpen(true)}
+      />
       <Drawer
-        className="bg-slate-800 text-white"
+        className="bg-slate-800 text-white border-l-sky-400"
         isOpen={open}
         onClose={() => setOpen(false)}
       >
@@ -26,7 +30,15 @@ const MobileNav = () => {
               whileInView={{ y: [100, 0], opacity: [0, 1] }}
               transition={{ duration: 0.3, delay: i * 0.3 }}
             >
-              <Link href={route.href}>{route.label}</Link>
+              <Link
+                className={cn(
+                  "text-lg focus-within:outline-offset-8 focus-within:outline-sky-400",
+                  route.active ? "text-sky-400" : "text-neutral-100"
+                )}
+                href={route.href}
+              >
+                {route.label}
+              </Link>
             </motion.li>
           ))}
         </ul>

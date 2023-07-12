@@ -9,22 +9,22 @@ const useRoutes = () => {
     {
       href: "/",
       label: "من نحن",
-      active: pathname === "",
+      active: pathname === "/",
     },
     {
       href: "/a",
       label: "خدماتنا",
-      active: pathname === "/",
+      active: pathname === "/a",
     },
     {
       href: "/b",
       label: "العيادات",
-      active: pathname === "/",
+      active: pathname === "/b",
     },
     {
       href: "/c",
       label: "جديدنا",
-      active: pathname === "/",
+      active: pathname === "/c",
     },
   ];
 
