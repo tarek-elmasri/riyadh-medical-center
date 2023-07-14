@@ -1,5 +1,5 @@
 import NavbarLinks from "./navbar-links";
-import MobileNav from "./mobile-nav";
+import MobileNav from "@/components/landing-page/mobile-nav";
 
 const Navbar = () => {
   return (

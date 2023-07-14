@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import useRoutes from "@/hooks/useRoutes";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import CTA from "@/components/landing-page/CTA";
 
 const NavbarLinks = () => {
   const routes = useRoutes();
@@ -34,9 +34,9 @@ const NavbarLinks = () => {
         whileInView={{ opacity: [0, 1] }}
         transition={{ duration: 0.3, delay: routes.length * 0.3 }}
       >
-        <Button className="bg-red-800 text-neutral-100 font-bold text-sm md:text-lg md:p-6 hover:bg-red-700">
+        <CTA className="bg-red-800 text-neutral-100 font-bold text-sm md:text-lg md:p-6 hover:bg-red-700">
           احجز موعدك
-        </Button>
+        </CTA>
       </motion.div>
     </div>
   );

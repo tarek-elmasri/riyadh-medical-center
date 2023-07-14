@@ -7,6 +7,9 @@ html,
 body,
 :root{
   height: 100%;
+
+  --nav-height: 6rem;
+  --hero-height: calc(100vh - 6rem)
 }
 
 @layer base {

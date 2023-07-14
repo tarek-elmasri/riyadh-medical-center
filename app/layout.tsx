@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="rtl">
       <body className={inter.className}>
-        <div className="h-full w-full bg-neutral-100">
+        <div className="h-full w-full bg-neutral-200">
           <AuthProvider>
             <ToastProvider />
             {children}

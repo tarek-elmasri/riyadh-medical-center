@@ -1,12 +1,14 @@
-import Navbar from "./components/Navbar";
+import Navbar from "@/components/landing-page/Navbar";
+import { ReactNode } from "react";
 
-const LandingPageLayout = ({ children }: { children: React.ReactNode }) => {
+const AppointmentSLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="bg-white min-h-full">
+    <div className="bg-slate-800 h-auto min-h-screen w-full">
       <Navbar />
-      <div className="w-full h-full bg-slate-800">{children}</div>
+
+      {children}
     </div>
   );
 };
 
-export default LandingPageLayout;
+export default AppointmentSLayout;
