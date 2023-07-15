@@ -6,6 +6,7 @@ interface UseMultiFormProps {
   isLastStep: boolean;
   isFirstStep: boolean;
   form: AppointmentFormData;
+  setCurrentStep: (stepNo: number) => void;
   setForm: (newData: Partial<AppointmentFormData>) => void;
   setSteps: (stepsCount: number, currentStep: number) => void;
   prev: (newData: Partial<AppointmentFormData>) => void;
@@ -41,6 +42,7 @@ const useMultiStepForm = create<UseMultiFormProps>((set) => ({
   isLastStep: true,
   isFirstStep: true,
   stepsCount: 0,
+  setCurrentStep: (step) => set((state) => ({ ...state, step })),
   setForm: (newData) =>
     set((state) => ({ ...state, form: { ...state.form, ...newData } })),
   setSteps: (stepsCount, currentStep) =>

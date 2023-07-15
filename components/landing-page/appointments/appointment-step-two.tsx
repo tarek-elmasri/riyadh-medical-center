@@ -1,13 +1,13 @@
 "use client";
 
 import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { getSchedulesForAppointments } from "@/app/actions/getSchedules";
 import { Schedule } from "@prisma/client";
 import { toast } from "react-hot-toast";
-import { motion } from "framer-motion";
 import {
   Form,
   FormControl,
@@ -164,7 +164,7 @@ const AppointmentStepTwo: React.FC = () => {
 
             {isSchedulesLoading && (
               <div className="flex justify-center">
-                <Loader size={18} />
+                <Loader size={18} color="white" className="mt-6" />
               </div>
             )}
 

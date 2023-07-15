@@ -1,20 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import useMultiStepForm from "@/hooks/useMultiStepForm";
+import axios from "axios";
 import { format } from "date-fns";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import axios from "axios";
+import useMultiStepForm from "@/hooks/useMultiStepForm";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import SuccessMark from "@/components/ui/success-mark";
 import Loader from "@/components/ui/Loader";
 
 const AppointmentSummary: React.FC = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const { prev, form: data } = useMultiStepForm();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const { prev, form: data, setForm, setCurrentStep } = useMultiStepForm();
 
   const handleSubmit = async () => {
     // reformat form date into isostring
@@ -25,7 +27,7 @@ const AppointmentSummary: React.FC = () => {
       setIsLoading(true);
       await axios.post("/api/appointments", formData);
       toast.success("تم حجز الموعد بنجاح");
-      router.push("/");
+      setIsSuccess(true);
     } catch (error) {
       console.log(error);
       toast.error("حدث خطأ");
@@ -34,8 +36,51 @@ const AppointmentSummary: React.FC = () => {
     }
   };
 
+  const handleNew = () => {
+    setForm({
+      clinicId: "",
+      date: new Date(),
+      clinicName: "",
+      doctorId: "",
+      doctorName: "",
+      doctorTitle: "",
+      patientName: "",
+      phoneNo: "",
+      scheduleId: "",
+      scheduleLabel: "",
+    });
+
+    setCurrentStep(1);
+  };
+
   if (isLoading) {
-    return <Loader message="جاري حجز الموعد" />;
+    return (
+      <div className="grid h-full place-items-center">
+        <div className="flex flex-col items-center">
+          <Loader color="white" />
+          <p>جاري حجز الموعد. الرجاء الانتظار ...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isLoading && isSuccess) {
+    return (
+      <div className="grid h-full place-items-center">
+        <div className="flex flex-col items-center">
+          <SuccessMark />
+          <p className="mt-6">تم حجز الموعد بنجاح</p>
+          <div className="mt-12 flex justify-center gap-6">
+            <Button onClick={() => window.location.assign("/appointments")}>
+              جديد
+            </Button>
+            <Button variant={"ghost"} onClick={() => router.push("/")}>
+              عودة
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (

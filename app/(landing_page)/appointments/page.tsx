@@ -1,6 +1,6 @@
 import { getClinics } from "@/app/actions/getClinics";
-import AppointmentForm from "./components/appointment-form";
-import FormStepIndicator from "./components/form-step-indicator";
+import AppointmentForm from "@/components/landing-page/appointments/appointment-form";
+import FormStepIndicator from "@/components/landing-page/appointments/form-step-indicator";
 
 const ClientAppointmentPage = async () => {
   const clinics = await getClinics();
@@ -8,7 +8,7 @@ const ClientAppointmentPage = async () => {
   return (
     <div className="p-8  w-full max-w-7xl mx-auto">
       <div className="grid md:grid-cols-2 gap-12 md:gap-16 place-items-center pb-6">
-        {/* left side header */}
+        {/* right side header */}
         <div className="text-center md:text-right">
           <h1 className="text-3xl md:text-6xl font-bold text-sky-400">
             حجز موعد
@@ -19,7 +19,7 @@ const ClientAppointmentPage = async () => {
         </div>
 
         {/* form */}
-        <div className="w-full max-w-md grid gap-6">
+        <div className="w-full max-w-sm grid gap-6">
           <FormStepIndicator />
           <div>
             <AppointmentForm clinics={clinics} />

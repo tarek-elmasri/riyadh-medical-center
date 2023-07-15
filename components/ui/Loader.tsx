@@ -19,7 +19,7 @@ const Loader: React.FC<LoaderProps> = ({ message, className, ...others }) => {
         {...others}
         aria-label="Loading Spinner"
       />
-      {message && <p className={"mt-12"}>{message}</p>}
+      <div className="mt-6">{message && <p>{message}</p>}</div>
     </>
   );
 };

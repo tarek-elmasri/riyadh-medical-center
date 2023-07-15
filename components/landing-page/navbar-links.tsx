@@ -1,13 +1,15 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import useRoutes from "@/hooks/useRoutes";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import CTA from "@/components/landing-page/CTA";
 
 const NavbarLinks = () => {
   const routes = useRoutes();
+  const router = useRouter();
   return (
     <div className="flex w-full overflow-hidden justify-start items-center px-6">
       <div className="hidden md:ml-auto md:flex justify-end md:justify-start gap-12 items-centers">
@@ -34,7 +36,10 @@ const NavbarLinks = () => {
         whileInView={{ opacity: [0, 1] }}
         transition={{ duration: 0.3, delay: routes.length * 0.3 }}
       >
-        <CTA className="bg-red-800 text-neutral-100 font-bold text-sm md:text-lg md:p-6 hover:bg-red-700">
+        <CTA
+          className="bg-red-800 text-neutral-100 font-bold text-sm md:text-lg md:p-6 hover:bg-red-700"
+          onClick={() => router.push("/appointments")}
+        >
           احجز موعدك
         </CTA>
       </motion.div>

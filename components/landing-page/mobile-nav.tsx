@@ -7,11 +7,13 @@ import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import CTA from "@/components/landing-page/CTA";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
   const routes = useRoutes();
-
+  const router = useRouter();
   return (
     <>
       <Menu
@@ -41,6 +43,14 @@ const MobileNav = () => {
               </Link>
             </motion.li>
           ))}
+
+          {/* CTA */}
+          <motion.li
+            whileInView={{ y: [100, 0], opacity: [0, 1] }}
+            transition={{ duration: 0.3, delay: routes.length * 0.3 }}
+          >
+            <CTA onClick={() => router.push("/appointments")}>احجز موعدك</CTA>
+          </motion.li>
         </ul>
       </Drawer>
     </>

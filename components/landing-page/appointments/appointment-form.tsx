@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
-import AppointmentStepOne from "./appointment-step-one";
-import { ClinicsWithDoctors } from "@/app/types";
-import AppointmentStepTwo from "./appointment-step-two";
 import useMultiStepForm from "@/hooks/useMultiStepForm";
-import AppointmentStepThree from "./appointment-step-three";
-import AppointmentSummary from "./appointment-summary";
+import AppointmentStepOne from "@/components/landing-page/appointments/appointment-step-one";
+import AppointmentStepTwo from "@/components/landing-page/appointments/appointment-step-two";
+import AppointmentStepThree from "@/components/landing-page/appointments/appointment-step-three";
+import AppointmentSummary from "@/components/landing-page/appointments/appointment-summary";
+import { ClinicsWithDoctors } from "@/app/types";
 
 interface AppointmentFormProps {
   clinics: ClinicsWithDoctors;
@@ -30,7 +30,10 @@ const AppointmentForm = ({ clinics }: AppointmentFormProps) => {
   }, [steps.length, setSteps]);
 
   return (
-    <div className="overflow-x-hidden h-[30rem] bg-white rounded-lg border-2 border-sky-400 shadow-md shadow-sky-100">
+    <div
+      className="overflow-x-hidden h-[30rem] rounded-lg border-2 border-sky-400 shadow-md 
+     shadow-sky-400 bg-slate-800 text-neutral-200 primary-blue"
+    >
       {currentStep > 0 && steps[currentStep - 1]}
     </div>
   );
