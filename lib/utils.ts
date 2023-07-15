@@ -1,6 +1,13 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
- 
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
+
+/* 
+  return date without time
+*/
+
+export const standardDate = (date: Date) =>
+  new Date(new Date(date).setHours(0, 0, 0, 0));
