@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
@@ -14,6 +14,7 @@ import CTA from "@/components/landing-page/CTA";
 const imgSrc = [img1, img2];
 
 const Hero = () => {
+  const router = useRouter();
   return (
     <>
       <header
@@ -54,7 +55,13 @@ const Hero = () => {
                       مختبرات عالية الدقة مع باقات خاصة تناسب احتياجاتك بأيدى
                       متخصصين في مختلف التحاليل و نتائج فورية
                     </p>
-                    <CTA className="mt-20 w-full"> احجز موعدك</CTA>
+                    <CTA
+                      className="mt-20 w-full"
+                      onClick={() => router.push("/appointments")}
+                    >
+                      {" "}
+                      احجز موعدك
+                    </CTA>
                   </div>
                 </div>
               </div>

@@ -7,22 +7,22 @@ const useRoutes = () => {
 
   const routes = [
     {
-      href: "/",
+      href: "/#aboutUs",
       label: "من نحن",
       active: pathname === "/",
     },
     {
-      href: "/a",
+      href: "/#services",
       label: "خدماتنا",
       active: pathname === "/a",
     },
     {
-      href: "/b",
+      href: "#",
       label: "العيادات",
       active: pathname === "/b",
     },
     {
-      href: "/c",
+      href: "#",
       label: "جديدنا",
       active: pathname === "/c",
     },

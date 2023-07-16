@@ -40,7 +40,7 @@ const DashboardNavLinks = () => {
 
   const adminRoutes = [
     {
-      href: "/panel",
+      href: "#",
       label: "لوحة التحكم",
       active: pathname === "/panel",
     },
