@@ -7,8 +7,8 @@ import Image from "next/image";
 
 const AboutUs = () => {
   return (
-    <div className="bg-slate-700" id="aboutUs">
-      <Container>
+    <div className="bg-slate-700">
+      <Container id="aboutUs">
         <Title name="من نحن" classNames="text-sky-400" />
 
         <div className="my-10 md:my-20">
@@ -18,10 +18,13 @@ const AboutUs = () => {
               transition={{ duration: 0.5 }}
               className="text-neutral-300 font-medium text-md w-full"
             >
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
-              repellat, vitae modi et mollitia, dolores officiis officia
-              pariatur quidem optio molestiae tenetur error quod iure sed
-              perferendis debitis inventore similique?
+              ان إدارة مركز الرياض الطبي لم تألوا جهداً وعلى مدار 30 عاماً في
+              تقديم نموذج طبي متميز للخدمات الطبية في كافة التخصصات الطبية بحيث
+              يجد المراجع كل ما يصبوا اليه من تخصصات طبية في مكان واحد لرفع
+              المعاناة على المريض والحصول على خدماته الطبية المزودة بأحدث
+              الأجهزة الطبية والتقنيات الطبية الحديثة ولقد كانت جودة الرعاية
+              الطبية هي اساس مبدأنا وتميزنا على مدار ثلاثون عاماً أثمر ذلك على
+              استقبال مجمعنا على اكثر من ألف مراجع يومياً لتلقي الرعاية الصحية.
             </motion.p>
 
             <motion.div

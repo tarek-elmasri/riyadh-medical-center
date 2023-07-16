@@ -11,7 +11,21 @@ import img2 from "@/assets/pexels-shedrack-salami-16903641.jpg";
 import { cn } from "@/lib/utils";
 import CTA from "@/components/landing-page/CTA";
 
-const imgSrc = [img1, img2];
+// const imgSrc = [img1, img2];
+
+const data = [
+  {
+    imgSrc: img1,
+    header: "خدمات صحية مميزة برعاية أطباء متخصصين",
+    description: `مجموعة مختارة من الأطباء ذوي الخبرة في مختلف التخصصات لتقديم الرعاية الصحية المناسبة`,
+  },
+  {
+    imgSrc: img2,
+    header: "معامل مزودة بأحدث الطرازات العالمية",
+    description: `مختبرات عالية الدقة مع باقات خاصة تناسب احتياجاتك بأيدى
+    متخصصين في مختلف التحاليل لتحصل على نتائجك الفورية`,
+  },
+];
 
 const Hero = () => {
   const router = useRouter();
@@ -27,14 +41,14 @@ const Hero = () => {
           effect="fade"
           slidesPerView={1}
         >
-          {imgSrc.map((img, i) => (
+          {data.map((frame, i) => (
             <SwiperSlide key={i + "bc"}>
               <div
                 className="relative w-full bg-slate-500"
                 style={{ height: "var(--hero-height" }}
               >
                 <Image
-                  src={img}
+                  src={frame.imgSrc}
                   fill
                   className="object-cover"
                   sizes="(max-width: 100%)"
@@ -49,11 +63,10 @@ const Hero = () => {
                 >
                   <div className="max-w-xs md:max-w-sm p-8 bg-slate-900/70 rounded-lg">
                     <h2 className="text-sky-400 text-xl md:text-3xl font-bold">
-                      خدمات صحية مميزة برعاية أطباء متخصصين
+                      {frame.header}
                     </h2>
                     <p className="mt-4 text-md md:text-md text-neutral-200 font-bold">
-                      مختبرات عالية الدقة مع باقات خاصة تناسب احتياجاتك بأيدى
-                      متخصصين في مختلف التحاليل و نتائج فورية
+                      {frame.description}
                     </p>
                     <CTA
                       className="mt-20 w-full"
