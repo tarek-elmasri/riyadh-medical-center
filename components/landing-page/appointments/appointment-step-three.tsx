@@ -16,15 +16,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { appointmentSchema } from "@/lib/validations/appointment-schema";
 
-const stepSchema = z.object({
-  patientName: z.string().min(1, { message: "حقل مطلوب" }),
-  phoneNo: z
-    .string()
-    .min(10, { message: "رقم الهاتف يجب الا يقل عن 10 ارقام" })
-    .startsWith("05", { message: "الرجاء استحدام رقم هاتف صحيح" }),
-});
-
+const stepSchema = appointmentSchema.pick({ patientName: true, phoneNo: true });
 type StepSchemaType = z.infer<typeof stepSchema>;
 
 const AppointmentStepThree = () => {

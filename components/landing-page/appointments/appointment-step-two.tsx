@@ -22,11 +22,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { format } from "date-fns";
+import { format, isFriday } from "date-fns";
 import { arSA } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { cn, standardDate } from "@/lib/utils";
 import Loader from "@/components/ui/Loader";
 import {
   Select,
@@ -37,11 +37,9 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import useMultiStepForm from "@/hooks/useMultiStepForm";
+import { appointmentSchema } from "@/lib/validations/appointment-schema";
 
-const stepSchema = z.object({
-  scheduleId: z.string().min(1, { message: "حقل مطلوب" }),
-  date: z.date({ required_error: "حقل مطلوب" }),
-});
+const stepSchema = appointmentSchema.pick({ scheduleId: true, date: true });
 
 type StepDataType = z.infer<typeof stepSchema>;
 
@@ -151,7 +149,9 @@ const AppointmentStepTwo: React.FC = () => {
                             field.onChange(selectedDate as Date)
                           }
                           locale={arSA}
-                          disabled={(date) => date < new Date()}
+                          disabled={(date) =>
+                            date < standardDate(new Date()) || isFriday(date)
+                          }
                           initialFocus
                         />
                       </PopoverContent>
