@@ -115,7 +115,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
     return () => {
       isFetching = false;
     };
-  }, [doctorId, date]);
+  }, [doctorId, date, form]);
 
   const onSubmit = async (data: AppointmentFormType & { clinicId: string }) => {
     try {
