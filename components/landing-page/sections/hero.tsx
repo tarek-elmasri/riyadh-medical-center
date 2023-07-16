@@ -6,8 +6,8 @@ import { Autoplay, EffectFade } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
-import img1 from "../../assets/pexels-evg-kowalievska-1170979.jpg";
-import img2 from "../../assets/pexels-shedrack-salami-16903641.jpg";
+import img1 from "@/assets/pexels-evg-kowalievska-1170979.jpg";
+import img2 from "@/assets/pexels-shedrack-salami-16903641.jpg";
 import { cn } from "@/lib/utils";
 import CTA from "@/components/landing-page/CTA";
 
@@ -46,11 +46,11 @@ const Hero = () => {
                     i % 2 === 0 ? "md:items-start" : "md:items-end"
                   )}
                 >
-                  <div className="max-w-xs md:max-w-md p-8 bg-slate-900/70 rounded-lg">
-                    <h2 className="text-sky-400 text-xl md:text-4xl font-bold">
+                  <div className="max-w-xs md:max-w-sm p-8 bg-slate-900/70 rounded-lg">
+                    <h2 className="text-sky-400 text-xl md:text-3xl font-bold">
                       خدمات صحية مميزة برعاية أطباء متخصصين
                     </h2>
-                    <p className="mt-4 text-md md:text-xl text-neutral-200 font-bold">
+                    <p className="mt-4 text-md md:text-md text-neutral-200 font-bold">
                       مختبرات عالية الدقة مع باقات خاصة تناسب احتياجاتك بأيدى
                       متخصصين في مختلف التحاليل و نتائج فورية
                     </p>

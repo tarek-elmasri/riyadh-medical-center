@@ -1,10 +1,10 @@
 import ToastProvider from "@/providers/toast-provider";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Noto_Naskh_Arabic } from "next/font/google";
+import { Noto_Naskh_Arabic, Noto_Sans_Arabic } from "next/font/google";
 import AuthProvider from "@/providers/auth-provider";
 
-const inter = Noto_Naskh_Arabic({ subsets: ["arabic"] });
+const inter = Noto_Sans_Arabic({ subsets: ["arabic"] });
 
 export const metadata: Metadata = {
   title: "Riyadh Medical Center",
