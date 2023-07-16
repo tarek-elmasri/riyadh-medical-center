@@ -1,8 +1,9 @@
-import ToastProvider from "@/providers/toast-provider";
-import "./globals.css";
 import type { Metadata } from "next";
-import { Noto_Naskh_Arabic, Noto_Sans_Arabic } from "next/font/google";
 import AuthProvider from "@/providers/auth-provider";
+import ToastProvider from "@/providers/toast-provider";
+import TopLoader from "nextjs-toploader";
+import { Noto_Sans_Arabic } from "next/font/google";
+import "./globals.css";
 
 const inter = Noto_Sans_Arabic({ subsets: ["arabic"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="rtl">
       <body className={inter.className}>
+        <TopLoader />
         <div className="h-full w-full bg-neutral-200">
           <AuthProvider>
             <ToastProvider />
