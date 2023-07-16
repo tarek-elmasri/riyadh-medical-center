@@ -27,11 +27,11 @@ const CellActions = ({ data }: { data: AppointmentColumn }) => {
       setIsLoading(true);
       await axios.delete(`/api/appointments/${data.id}`);
       close();
-      toast.success("تم حذف العيادة بنجاح");
-      router.refresh();
+      toast.success("تم حذف الموعد بنجاح");
+      window.location.assign("/dashboard/appointments");
     } catch (error) {
       close();
-      toast.error("حدث خطأ. تأكد من عدوم وجود أطباء مرتبطين بهذه العيادة");
+      toast.error("حدث خطأ.");
     } finally {
       setIsLoading(false);
     }
@@ -54,6 +54,13 @@ const CellActions = ({ data }: { data: AppointmentColumn }) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">
+          <DropdownMenuItem
+            disabled={isLoading}
+            className="flex-row-reverse"
+            onClick={() => router.push(`/dashboard/appointments/${data.id}`)}
+          >
+            تحديث البيانات
+          </DropdownMenuItem>
           <DropdownMenuItem
             disabled={isLoading}
             className="flex-row-reverse"
