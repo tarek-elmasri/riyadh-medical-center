@@ -17,6 +17,11 @@ const DashboardNavLinks = () => {
       active: pathname === "/dashboard",
     },
     {
+      href: "/dashboard/appointments",
+      label: "الحجوزات",
+      active: pathname === "/dashboard/appointments",
+    },
+    {
       href: "/dashboard/schedules",
       label: "المواعيد",
       active: pathname === "/dashboard/schedules",
