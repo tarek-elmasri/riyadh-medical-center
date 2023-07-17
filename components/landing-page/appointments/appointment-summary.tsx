@@ -21,7 +21,6 @@ const AppointmentSummary: React.FC = () => {
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
-      console.log(data);
       await axios.post("/api/appointments", data);
       toast.success("تم حجز الموعد بنجاح");
       setIsSuccess(true);
