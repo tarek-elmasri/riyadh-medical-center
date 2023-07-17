@@ -20,8 +20,5 @@ export const standardDate = (date: Date) => new Date(date.setHours(0, 0, 0, 0));
 // };
 
 export const todayInKSA = () => {
-  const timesInMilliSeconds = new Date().getTime();
-  const ksaOffset = 3 * 60 * 60 * 1000;
-  const toUTC = new Date(timesInMilliSeconds - ksaOffset);
-  return toUTC;
+  return new Date(new Date(new Date().setHours(3, 0, 0, 0)).toUTCString());
 };
