@@ -9,8 +9,9 @@ export function cn(...inputs: ClassValue[]) {
   return date without time
 */
 
-export const standardDate = (date: Date) => new Date(date.setHours(0, 0, 0, 0));
-
+// export const standardDate = (date: Date) => new Date(date.setHours(0, 0, 0, 0));
+export const standardDate = (date: Date) =>
+  new Date(new Date(date).setUTCHours(0, 0, 0, 0));
 // export const todayInKSA = () => {
 //   const local = new Date();
 //   const timezoneOffset = local.getTimezoneOffset();
