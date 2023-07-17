@@ -21,5 +21,6 @@ export const standardDate = (date: Date) =>
 // };
 
 export const todayInKSA = () => {
-  return new Date(new Date(new Date().setHours(3, 0, 0, 0)).toUTCString());
+  return standardDate(new Date());
+  //  return new Date(new Date(new Date().setHours(3, 0, 0, 0)).toUTCString());
 };
