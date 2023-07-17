@@ -64,7 +64,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
   const defaultValues = {
     clinicId: initialAppointment?.doctor.clinicId || "",
     doctorId: initialAppointment?.doctor.id || "",
-    date: initialAppointment?.date || new Date(),
+    date: initialAppointment?.date || standardDate(new Date()),
     patientName: initialAppointment?.patient.patientName || "",
     phoneNo: initialAppointment?.patient.phoneNo || "",
   };
@@ -92,7 +92,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
         setIsNoResults(false);
         const schedules = await getSchedulesForAppointments({
           doctorId,
-          date: date.toISOString(),
+          date: date,
         });
         if (isFetching) {
           setSchedules(schedules);

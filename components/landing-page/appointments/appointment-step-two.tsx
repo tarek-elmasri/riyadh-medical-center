@@ -67,7 +67,7 @@ const AppointmentStepTwo: React.FC = () => {
         setIsNoResults(false);
         const schedules = await getSchedulesForAppointments({
           doctorId,
-          date: date.toISOString(),
+          date: date,
         });
         if (isFetching) {
           setSchedules(schedules);

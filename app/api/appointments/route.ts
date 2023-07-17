@@ -3,6 +3,7 @@ import { appointmentSchema } from "@/lib/validations/appointment-schema";
 import { ZodError } from "zod";
 import { badParameters, serverError } from "../errors";
 import { NextResponse } from "next/server";
+import { standardDate } from "@/lib/utils";
 
 export const POST = async (req: Request) => {
   try {
@@ -11,9 +12,9 @@ export const POST = async (req: Request) => {
     // reformatting dates
     let formattedDate: Date | undefined;
     if (json.date) {
-      formattedDate = new Date(new Date(json.date).setHours(0, 0, 0, 0));
+      formattedDate = standardDate(new Date(json.date));
     }
-
+    console.log("formatted", formattedDate);
     const body = appointmentSchema.parse({ ...json, date: formattedDate });
     const { date, doctorId, patientName, phoneNo, scheduleId } = body;
 
@@ -30,13 +31,13 @@ export const POST = async (req: Request) => {
       });
 
       // abort if patient already have a reservation with same doctor
-      const today = new Date().setHours(0, 0, 0, 0);
+      const today = standardDate(new Date());
       const hasAppointment = await tx.appointment.findFirst({
         where: {
           doctorId,
           patientId: patient.id,
           date: {
-            gte: new Date(today),
+            gte: today,
           },
         },
       });
