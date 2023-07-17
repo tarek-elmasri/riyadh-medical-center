@@ -64,7 +64,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
   const defaultValues = {
     clinicId: initialAppointment?.doctor.clinicId || "",
     doctorId: initialAppointment?.doctor.id || "",
-    date: initialAppointment?.date || new Date(),
+    date: initialAppointment?.date || standardDate(new Date()),
     patientName: initialAppointment?.patient.patientName || "",
     phoneNo: initialAppointment?.patient.phoneNo || "",
   };
@@ -85,6 +85,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
 
   // fetch available appointments after doctor and date selections
   useEffect(() => {
+    if (!date || !doctorId) return;
     let isFetching = true;
     const fetchSchedules = async () => {
       try {
@@ -119,6 +120,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
 
   const onSubmit = async (data: AppointmentFormType & { clinicId: string }) => {
     try {
+      console.log(data);
       setIsSubmitting(true);
       if (initialAppointment?.id) {
         await axios.patch(`/api/appointments/${initialAppointment.id}`, data);
@@ -129,6 +131,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
       toast.success("تم حجز الموعد بنجاح");
       window.location.assign("/dashboard/appointments");
     } catch (error) {
+      toast.error("خدث خطأ. الرجاء التأكد من عدم وجود حجز قادم للمريض");
     } finally {
       setIsSubmitting(false);
     }

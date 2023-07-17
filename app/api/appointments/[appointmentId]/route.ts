@@ -19,7 +19,6 @@ export const PATCH = async (
     const json = await req.json();
     // reformatting dates
     let formattedDate: Date | undefined;
-    console.log("hit");
     if (json.date) {
       formattedDate = standardDate(json.date);
     }
@@ -55,7 +54,7 @@ export const PATCH = async (
           id: params.appointmentId,
         },
         data: {
-          date: standardDate(date),
+          date,
           doctorId,
           scheduleId,
           patientId: patient.id,
