@@ -15,6 +15,6 @@ export const todayInKSA = () => {
   const local = new Date();
   const timezoneOffset = local.getTimezoneOffset();
   const utc = new Date(local.getTime() - timezoneOffset * 6000);
-  const ksaOffset = 3 * 60 * 60 * 1000;
-  return new Date(utc.getTime() + ksaOffset);
+  // const ksaOffset = 3 * 60 * 60 * 1000;
+  return utc;
 };
