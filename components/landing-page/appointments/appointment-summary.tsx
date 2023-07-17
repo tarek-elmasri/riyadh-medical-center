@@ -19,18 +19,14 @@ const AppointmentSummary: React.FC = () => {
   const { prev, form: data, setForm, setCurrentStep } = useMultiStepForm();
 
   const handleSubmit = async () => {
-    // reformat form date into isostring
-    const formattedDate = data.date.toISOString();
-    const formData = { ...data, date: formattedDate };
-
     try {
       setIsLoading(true);
-      await axios.post("/api/appointments", formData);
+      await axios.post("/api/appointments", data);
       toast.success("تم حجز الموعد بنجاح");
       setIsSuccess(true);
     } catch (error) {
       console.log(error);
-      toast.error("حدث خطأ");
+      toast.error("حدث خطأ. الرجاء التأكد من عدم وجود اي حجز اخر مع الطبيب");
     } finally {
       setIsLoading(false);
     }

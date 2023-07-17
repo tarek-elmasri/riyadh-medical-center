@@ -42,7 +42,7 @@ import { format, isFriday } from "date-fns";
 import { arSA } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
-import { cn, standardDate } from "@/lib/utils";
+import { cn, standardDate, todayInKSA } from "@/lib/utils";
 import Loader from "../ui/Loader";
 import axios from "axios";
 
@@ -64,7 +64,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
   const defaultValues = {
     clinicId: initialAppointment?.doctor.clinicId || "",
     doctorId: initialAppointment?.doctor.id || "",
-    date: initialAppointment?.date || new Date(),
+    date: initialAppointment?.date || standardDate(todayInKSA()),
     patientName: initialAppointment?.patient.patientName || "",
     phoneNo: initialAppointment?.patient.phoneNo || "",
   };
@@ -92,7 +92,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
         setIsNoResults(false);
         const schedules = await getSchedulesForAppointments({
           doctorId,
-          date: date.toISOString(),
+          date: date,
         });
         if (isFetching) {
           setSchedules(schedules);
@@ -129,6 +129,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
       toast.success("تم حجز الموعد بنجاح");
       window.location.assign("/dashboard/appointments");
     } catch (error) {
+      toast.error("حدث خطأ. الرجاء التأكد من ان الموعد ما زال متاحا");
     } finally {
       setIsSubmitting(false);
     }
@@ -221,7 +222,7 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
                         }
                         locale={arSA}
                         disabled={(date) =>
-                          date < standardDate(new Date()) || isFriday(date)
+                          date < standardDate(todayInKSA()) || isFriday(date)
                         }
                         initialFocus
                       />

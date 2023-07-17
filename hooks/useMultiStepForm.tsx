@@ -1,4 +1,4 @@
-import { standardDate } from "@/lib/utils";
+import { standardDate, todayInKSA } from "@/lib/utils";
 import { create } from "zustand";
 
 interface UseMultiFormProps {
@@ -30,7 +30,7 @@ interface AppointmentFormData {
 const initialFormData = {
   clinicId: "",
   doctorId: "",
-  date: standardDate(new Date()),
+  date: standardDate(todayInKSA()),
   patientName: "",
   phoneNo: "",
   scheduleId: "",

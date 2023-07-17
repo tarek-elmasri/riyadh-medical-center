@@ -7,7 +7,10 @@ const AppointmentsPage = async () => {
 
   return (
     <div>
-      <DashboardPageHeader label="الحجوزات" />
+      <DashboardPageHeader
+        label="الحجوزات"
+        addNewURL="/dashboard/appointments/new"
+      />
 
       <Controler doctors={doctors} />
     </div>

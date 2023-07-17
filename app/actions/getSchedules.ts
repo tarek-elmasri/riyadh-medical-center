@@ -18,7 +18,7 @@ export const getSchedulesByQuery = (query: Partial<Schedule>) =>
 
 interface SchedulesOptions {
   doctorId: string;
-  date: string;
+  date: Date;
 }
 
 export const getSchedulesForAppointments = async ({

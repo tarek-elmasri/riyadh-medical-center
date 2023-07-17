@@ -1,12 +1,12 @@
 import * as z from "zod";
-import { standardDate } from "../utils";
+import { standardDate, todayInKSA } from "../utils";
 import { isFriday } from "date-fns";
 
 export const appointmentSchema = z.object({
   doctorId: z.string().min(1, { message: "حقل مطلوب" }),
   date: z
     .date({ required_error: "حقل مطلوب" })
-    .min(standardDate(new Date()))
+    .min(standardDate(todayInKSA()))
     .refine((date) => !isFriday(date), { message: "لا يمكن حجز يوم جمعة" }),
   patientName: z.string().min(1, { message: "حقل مطلوب" }),
   phoneNo: z
