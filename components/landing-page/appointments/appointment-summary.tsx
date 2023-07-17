@@ -26,7 +26,7 @@ const AppointmentSummary: React.FC = () => {
       setIsSuccess(true);
     } catch (error) {
       console.log(error);
-      toast.error("حدث خطأ");
+      toast.error("حدث خطأ. الرجاء التأكد من عدم وجود اي حجز اخر مع الطبيب");
     } finally {
       setIsLoading(false);
     }
