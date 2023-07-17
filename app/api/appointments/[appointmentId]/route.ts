@@ -32,7 +32,9 @@ export const PATCH = async (
         where: {
           phoneNo,
         },
-        update: {},
+        update: {
+          patientName,
+        },
         create: {
           patientName,
           phoneNo,

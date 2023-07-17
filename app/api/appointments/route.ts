@@ -23,7 +23,9 @@ export const POST = async (req: Request) => {
         where: {
           phoneNo,
         },
-        update: {},
+        update: {
+          patientName,
+        },
         create: {
           patientName,
           phoneNo,
