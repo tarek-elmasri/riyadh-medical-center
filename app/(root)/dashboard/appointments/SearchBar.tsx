@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn, standardDate } from "@/lib/utils";
+import { cn, standardDate, todayInKSA } from "@/lib/utils";
 import { Doctor } from "@prisma/client";
 import { format } from "date-fns";
 import { arSA } from "date-fns/locale";
@@ -37,7 +37,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ handleSearch, doctors }) => {
   const form = useForm<{ doctorId: string; date: Date }>({
     defaultValues: {
       doctorId: "",
-      date: standardDate(new Date()),
+      date: standardDate(todayInKSA()),
     },
   });
 

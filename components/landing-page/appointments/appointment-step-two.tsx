@@ -26,7 +26,7 @@ import { format, isFriday } from "date-fns";
 import { arSA } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
-import { cn, standardDate } from "@/lib/utils";
+import { cn, standardDate, todayInKSA } from "@/lib/utils";
 import Loader from "@/components/ui/Loader";
 import {
   Select,
@@ -150,7 +150,7 @@ const AppointmentStepTwo: React.FC = () => {
                           }
                           locale={arSA}
                           disabled={(date) =>
-                            date < standardDate(new Date()) || isFriday(date)
+                            date < standardDate(todayInKSA()) || isFriday(date)
                           }
                           initialFocus
                         />
