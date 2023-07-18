@@ -1,12 +1,9 @@
 import prismadb from "@/lib/prismadb";
-import {
-  appointmentSchema,
-  serverAppointmentSchema,
-} from "@/lib/validations/appointment-schema";
+import { serverAppointmentSchema } from "@/lib/validations/appointment-schema";
 import { ZodError } from "zod";
 import { badParameters, serverError } from "../errors";
 import { NextResponse } from "next/server";
-import { standardDate, todayInKSA } from "@/lib/utils";
+import { standardDate } from "@/lib/utils";
 
 export const POST = async (req: Request) => {
   try {
@@ -38,13 +35,12 @@ export const POST = async (req: Request) => {
       });
 
       // abort if patient already have a reservation with same doctor
-      const today = standardDate(todayInKSA());
       const hasAppointment = await tx.appointment.findFirst({
         where: {
           doctorId,
           patientId: patient.id,
           date: {
-            gte: today,
+            gte: date,
           },
         },
       });
