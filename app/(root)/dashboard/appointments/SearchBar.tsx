@@ -47,7 +47,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ handleSearch, doctors }) => {
         <form onSubmit={form.handleSubmit(handleSearch)}>
           <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-center">
             <div className="w-full">
-              {`client Date: ${new Date()}`}
               <FormField
                 control={form.control}
                 name="doctorId"
