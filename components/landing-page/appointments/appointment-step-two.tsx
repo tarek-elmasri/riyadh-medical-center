@@ -169,9 +169,7 @@ const AppointmentStepTwo: React.FC = () => {
             )}
 
             {isNoResult ? (
-              <p className="font-bold text-md text-slate-900">
-                * لا يوجد مواعيد
-              </p>
+              <p className="font-bold text-md text-red-600">* لا يوجد مواعيد</p>
             ) : (
               !isSchedulesLoading &&
               date && (
