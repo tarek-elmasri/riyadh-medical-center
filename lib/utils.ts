@@ -12,16 +12,13 @@ export function cn(...inputs: ClassValue[]) {
 // export const standardDate = (date: Date) => new Date(date.setHours(0, 0, 0, 0));
 export const standardDate = (date: Date) =>
   new Date(new Date(date).setUTCHours(0, 0, 0, 0));
-// export const todayInKSA = () => {
-//   const local = new Date();
-//   const timezoneOffset = local.getTimezoneOffset();
-//   const utc = new Date(local.getTime() - timezoneOffset * 6000);
-//   const ksaOffset = 3 * 60 * 60 * 1000;
-//   return new Date(utc.getTime() + ksaOffset);
-// };
 
-// export const todayInKSA = () => {
-//   return standardDate(new Date());
-//   //  return new Date(new Date(new Date().setHours(3, 0, 0, 0)).toUTCString());
-// };
-export const todayInKSA = () => new Date(new Date().setUTCHours(3, 0, 0, 0));
+// time in client
+export const todayInKSA = () => standardDate(new Date());
+
+// time on server is in UTC so adding ksa offset 3 hours for validations of dates on server
+export const serverTodayInKSA = () => {
+  const local = new Date();
+  const offsetKSA = 3 * 60 * 60 * 1000;
+  return new Date(local.getTime() + offsetKSA);
+};

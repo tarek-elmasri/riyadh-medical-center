@@ -1,5 +1,8 @@
 import prismadb from "@/lib/prismadb";
-import { appointmentSchema } from "@/lib/validations/appointment-schema";
+import {
+  appointmentSchema,
+  serverAppointmentSchema,
+} from "@/lib/validations/appointment-schema";
 import { ZodError } from "zod";
 import { badParameters, serverError } from "../errors";
 import { NextResponse } from "next/server";
@@ -15,7 +18,10 @@ export const POST = async (req: Request) => {
       formattedDate = standardDate(new Date(json.date));
     }
     console.log("formatted", formattedDate);
-    const body = appointmentSchema.parse({ ...json, date: formattedDate });
+    const body = serverAppointmentSchema.parse({
+      ...json,
+      date: formattedDate,
+    });
     const { date, doctorId, patientName, phoneNo, scheduleId } = body;
 
     const appointment = await prismadb.$transaction(async (tx) => {
