@@ -10,26 +10,6 @@ import {
 import { clinicSchema } from "@/lib/validations/clinic-schema";
 import { ZodError } from "zod";
 
-// export const GET = async (
-//   _req: Request,
-//   { params }: { params: { clinicId: string } }
-// ) => {
-//   try {
-//     const clinic = await prismadb.clinic.findFirst({
-//       where: {
-//         id: params.clinicId,
-//       },
-//       include: {
-//         doctors: true,
-//       },
-//     });
-
-//     return NextResponse.json(clinic);
-//   } catch (error) {
-//     return serverError();
-//   }
-// };
-
 export const PATCH = async (
   req: Request,
   { params }: { params: { clinicId: string } }

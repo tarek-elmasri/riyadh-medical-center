@@ -21,7 +21,6 @@ const AppointmentSummary: React.FC = () => {
   const handleSubmit = async () => {
     try {
       setIsLoading(true);
-      console.log(data);
       await axios.post("/api/appointments", data);
       toast.success("تم حجز الموعد بنجاح");
       setIsSuccess(true);
@@ -31,23 +30,6 @@ const AppointmentSummary: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleNew = () => {
-    setForm({
-      clinicId: "",
-      date: new Date(),
-      clinicName: "",
-      doctorId: "",
-      doctorName: "",
-      doctorTitle: "",
-      patientName: "",
-      phoneNo: "",
-      scheduleId: "",
-      scheduleLabel: "",
-    });
-
-    setCurrentStep(1);
   };
 
   if (isLoading) {

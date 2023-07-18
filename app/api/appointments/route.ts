@@ -17,7 +17,6 @@ export const POST = async (req: Request) => {
     if (json.date) {
       formattedDate = standardDate(new Date(json.date));
     }
-    console.log("formatted", formattedDate);
     const body = serverAppointmentSchema.parse({
       ...json,
       date: formattedDate,

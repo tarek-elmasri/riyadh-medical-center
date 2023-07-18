@@ -1,4 +1,4 @@
-import { getClinicById, getClinics } from "@/app/actions/getClinics";
+import { getClinics } from "@/app/actions/getClinics";
 import { getDoctorById } from "@/app/actions/getDoctors";
 import { getSchedules } from "@/app/actions/getSchedules";
 import DoctorForm from "@/components/doctor/doctor-form";

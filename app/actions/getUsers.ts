@@ -5,7 +5,7 @@ export const getUsers = async () => {
   const currentUser = await getCurrentUser();
   if (!currentUser) throw new Error("Unauthenticated");
   if (!currentUser.isAdmin) throw new Error("Unauthorized");
-  console.log(currentUser);
+
   const users = await prismadb.user.findMany({
     where: {
       id: {

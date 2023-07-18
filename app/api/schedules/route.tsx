@@ -7,7 +7,6 @@ import {
   unAuthenticatedError,
   unAuthorizedError,
 } from "../errors";
-import { clinicSchema } from "@/lib/validations/clinic-schema";
 import { ZodError } from "zod";
 import { scheduleSchema } from "@/lib/validations/schedule-schema";
 

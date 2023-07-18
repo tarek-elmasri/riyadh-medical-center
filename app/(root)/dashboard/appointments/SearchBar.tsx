@@ -1,5 +1,10 @@
 "use client";
 
+import { Doctor } from "@prisma/client";
+import { format } from "date-fns";
+import { arSA } from "date-fns/locale";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -22,11 +27,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn, standardDate, todayInKSA } from "@/lib/utils";
-import { Doctor } from "@prisma/client";
-import { format } from "date-fns";
-import { arSA } from "date-fns/locale";
-import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
 
 interface SearchBarProps {
   handleSearch: (form: { doctorId: string; date: Date }) => void;

@@ -37,13 +37,7 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { Check, ChevronsUpDown } from "lucide-react";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
+import { Command, CommandGroup, CommandItem } from "@/components/ui/command";
 
 interface DoctorFormProps {
   doctor: (Doctor & { schedules: Schedule[] }) | null;
@@ -74,8 +68,6 @@ const DoctorForm: React.FC<DoctorFormProps> = ({
   const scheduleIds = form.watch("scheduleIds");
 
   const handleScheduleCheck = (id: string) => {
-    console.log("handling");
-    console.log("value: ", id);
     const newScheduleIds: string[] = [];
 
     schedules.map((schedule) => {
@@ -89,7 +81,6 @@ const DoctorForm: React.FC<DoctorFormProps> = ({
         }
       }
     });
-    console.log(newScheduleIds);
     return newScheduleIds;
   };
 

@@ -1,8 +1,5 @@
 import prismadb from "@/lib/prismadb";
-import {
-  appointmentSchema,
-  serverAppointmentSchema,
-} from "@/lib/validations/appointment-schema";
+import { serverAppointmentSchema } from "@/lib/validations/appointment-schema";
 import { ZodError } from "zod";
 import { badParameters, serverError, unAuthenticatedError } from "../../errors";
 import { NextResponse } from "next/server";
@@ -22,7 +19,6 @@ export const PATCH = async (
     const json = await req.json();
     // reformatting dates
     let formattedDate: Date | undefined;
-    console.log("hit");
     if (json.date) {
       formattedDate = standardDate(json.date);
     }
