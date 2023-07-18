@@ -129,7 +129,9 @@ const NewAppointmentForm: React.FC<NewAppointmentFormProps> = ({
       toast.success("تم حجز الموعد بنجاح");
       window.location.assign("/dashboard/appointments");
     } catch (error) {
-      toast.error("حدث خطأ. الرجاء التأكد من ان الموعد ما زال متاحا");
+      toast.error(
+        "حدث خطأ. الرجاء التأكد من ان الموعد ما زال متاحا مع عدم وجود حجز اخر للمريض في ذلك اليوم"
+      );
     } finally {
       setIsSubmitting(false);
     }
