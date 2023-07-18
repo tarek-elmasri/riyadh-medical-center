@@ -39,9 +39,7 @@ export const POST = async (req: Request) => {
         where: {
           doctorId,
           patientId: patient.id,
-          date: {
-            gte: date,
-          },
+          date: date,
         },
       });
 
