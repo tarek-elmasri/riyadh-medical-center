@@ -12,11 +12,6 @@ const DashboardNavLinks = () => {
 
   const routes = [
     {
-      href: "/dashboard",
-      label: "الرئيسية",
-      active: pathname === "/dashboard",
-    },
-    {
       href: "/dashboard/appointments",
       label: "الحجوزات",
       active: pathname === "/dashboard/appointments",
@@ -54,6 +49,19 @@ const DashboardNavLinks = () => {
   if (isAdmin) routes.push(...adminRoutes);
   return (
     <>
+      <li>
+        <a
+          href={"/dashboard"}
+          className={cn(
+            "font-medium  no-underline hover:underline underline-offset-8",
+            pathname === "/dashboard"
+              ? "text-black underline font-bold"
+              : "text-neutral-600"
+          )}
+        >
+          الرئيسية
+        </a>
+      </li>
       {routes.map((route) => (
         <li key={route.href}>
           <Link
