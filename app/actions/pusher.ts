@@ -5,25 +5,25 @@ import pusher from "@/lib/pusher";
 
 let startList: PusherDoctor[] = [];
 
-export const triggerIncrement = (id: string) => {
+export const triggerIncrement = async (id: string) => {
   const target = startList.find((doctor) => doctor.id === id);
   if (target) {
     target.counter++;
-    pusher.trigger("counters", "increment", id);
+    await pusher.trigger("counters", "increment", id);
   }
 };
 
-export const triggerDecrement = (id: string) => {
+export const triggerDecrement = async (id: string) => {
   const target = startList.find((doctor) => doctor.id === id);
   if (target && target.counter > 0) {
     target.counter--;
-    pusher.trigger("counters", "decrement", id);
+    await pusher.trigger("counters", "decrement", id);
   }
 };
 
-export const triggerRemove = (id: string) => {
+export const triggerRemove = async (id: string) => {
   startList = startList.filter((doctor) => doctor.id !== id);
-  pusher.trigger("counters", "remove", id);
+  await pusher.trigger("counters", "remove", id);
 };
 
 export interface PusherDoctor {
@@ -31,9 +31,9 @@ export interface PusherDoctor {
   id: string;
   counter: number;
 }
-export const triggerAdd = (doctor: Omit<PusherDoctor, "counter">) => {
+export const triggerAdd = async (doctor: Omit<PusherDoctor, "counter">) => {
   startList.push({ ...doctor, counter: 0 });
-  pusher.trigger("counters", "add", doctor);
+  await pusher.trigger("counters", "add", doctor);
 };
 
 export const getCurrentList = async () => startList;
