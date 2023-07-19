@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { pusherClient } from "@/lib/pusher";
-import { PusherDoctor } from "@/app/actions/pusher";
+import { PusherDoctor } from "@prisma/client";
 import DoctorCounter from "@/components/counters/doctor-counter";
 
 interface CounterClientProps {
@@ -18,8 +18,10 @@ const CounterClient: React.FC<CounterClientProps> = ({ initialData }) => {
       setDoctors((prev) => [...prev, doctor]);
     };
 
-    const remove = (id: string) => {
-      setDoctors((prev) => prev.filter((doctor) => doctor.id != id));
+    const remove = (pusherItem: PusherDoctor) => {
+      setDoctors((prev) =>
+        prev.filter((pusherDoctor) => pusherDoctor.id !== pusherItem.id)
+      );
     };
 
     pusherClient.bind("add", add);
@@ -35,7 +37,7 @@ const CounterClient: React.FC<CounterClientProps> = ({ initialData }) => {
   return (
     <>
       {doctors.map((doctor) => (
-        <DoctorCounter key={doctor.id} doctor={doctor} />
+        <DoctorCounter key={doctor.id} pusherDoctor={doctor} />
       ))}
     </>
   );

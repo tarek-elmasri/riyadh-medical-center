@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { pusherClient } from "@/lib/pusher";
-import { PusherDoctor, triggerAdd } from "@/app/actions/pusher";
+import { Doctor, PusherDoctor } from "@prisma/client";
+import { triggerAdd } from "@/app/actions/pusher";
 import {
   Select,
   SelectContent,
@@ -14,7 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 interface CounterLisetProps {
-  initialList: PusherDoctor[];
+  initialList: Doctor[];
 }
 
 const CounterList: React.FC<CounterLisetProps> = ({ initialList }) => {
@@ -24,16 +25,18 @@ const CounterList: React.FC<CounterLisetProps> = ({ initialList }) => {
   useEffect(() => {
     pusherClient.subscribe("counters");
 
-    const add = (doctor: PusherDoctor) => {
-      // remove doctor from list after adding it to dashboard
+    const add = (pusherDoctor: PusherDoctor) => {
+      // remove pusherDoctor from list after adding it to dashboard
       setCurrentList((prev) =>
-        prev.filter((listDoctor) => listDoctor.id != doctor.id)
+        prev.filter((listDoctor) => listDoctor.id !== pusherDoctor.doctorId)
       );
     };
 
-    const remove = (id: string) => {
+    const remove = (pusherItem: PusherDoctor) => {
       // add the doctor again in list on remove event from dashboard
-      const targetDoctor = initialList.find((doctor) => doctor.id == id);
+      const targetDoctor = initialList.find(
+        (doctor) => doctor.id === pusherItem.doctorId
+      );
       if (targetDoctor) setCurrentList((prev) => [...prev, targetDoctor]);
     };
 
@@ -80,8 +83,11 @@ const CounterList: React.FC<CounterLisetProps> = ({ initialList }) => {
               (doctor) => doctor.id === selection
             );
             if (doctor) {
-              console.log(doctor);
-              triggerAdd(doctor);
+              triggerAdd({
+                doctorId: doctor.id,
+                name: doctor.name,
+                counter: 0,
+              });
             }
           }}
         >

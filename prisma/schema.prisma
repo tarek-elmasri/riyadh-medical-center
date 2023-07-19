@@ -76,3 +76,10 @@ model Patient {
 
   appointments Appointment[]
 }
+
+model PusherDoctor {
+  id       String @id @default(uuid())
+  counter  Int    @default(0)
+  name     String
+  doctorId String
+}

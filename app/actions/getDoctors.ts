@@ -1,6 +1,6 @@
 import prismadb from "@/lib/prismadb";
 import { Doctor } from "@prisma/client";
-import { PusherDoctor } from "./pusher";
+import { PusherDoctor } from "@prisma/client";
 
 export const getDoctors = async () =>
   prismadb.doctor.findMany({
@@ -25,21 +25,15 @@ export const getDoctorsByQuery = (query: Doctor) =>
     },
   });
 
-export const getDoctorsCounterList = async (
-  currentList: PusherDoctor[]
-): Promise<PusherDoctor[]> => {
-  const currentDoctorIds = currentList.map((doctor) => doctor.id);
-  const doctors = await prismadb.doctor.findMany({
+export const getDoctorsCounterList = async () => {
+  // const currentDoctorIds = currentList.map((pusherItem) => pusherItem.doctorId);
+  return prismadb.doctor.findMany({
     where: {
       id: {
-        notIn: currentDoctorIds,
+        notIn: (await prismadb.pusherDoctor.findMany()).map(
+          (pusherItem) => pusherItem.doctorId
+        ),
       },
     },
   });
-
-  return doctors.map((doctor) => ({
-    name: doctor.name,
-    id: doctor.id,
-    counter: 0,
-  }));
 };

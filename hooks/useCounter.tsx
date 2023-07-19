@@ -6,26 +6,26 @@ import {
   triggerIncrement,
   triggerDecrement,
   triggerRemove,
-  PusherDoctor,
 } from "@/app/actions/pusher";
+import { PusherDoctor } from "@prisma/client";
 
 interface UseCounterProps {
-  doctor: PusherDoctor;
+  pusherDoctor: PusherDoctor;
 }
-const useCounter = ({ doctor }: UseCounterProps) => {
-  const [counter, setCounter] = useState(doctor.counter);
+const useCounter = ({ pusherDoctor }: UseCounterProps) => {
+  const [counter, setCounter] = useState(pusherDoctor.counter);
 
   useEffect(() => {
     pusherClient.subscribe("counters");
 
     const increment = (id: string) => {
-      if (doctor.id == id) {
+      if (pusherDoctor.id === id) {
         setCounter((prev) => prev + 1);
       }
     };
 
     const decrement = (id: string) => {
-      if (doctor.id == id) setCounter((prev) => prev - 1);
+      if (pusherDoctor.id === id) setCounter((prev) => prev - 1);
     };
 
     pusherClient.bind(`increment`, increment);
@@ -36,7 +36,7 @@ const useCounter = ({ doctor }: UseCounterProps) => {
       pusherClient.unbind(`increment`, increment);
       pusherClient.unbind(`decrement`, decrement);
     };
-  }, [doctor.id, setCounter]);
+  }, [pusherDoctor.id, setCounter]);
 
   return {
     counter,
