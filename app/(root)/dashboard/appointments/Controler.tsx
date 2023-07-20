@@ -19,6 +19,7 @@ const Controler: React.FC<ControlerProps> = ({ doctors }) => {
     () =>
       appointments.map((appointment) => ({
         id: appointment.id,
+        scheduleLabel: appointment.schedule.label,
         patientName: appointment.patient.patientName,
         patientPhoneNo: appointment.patient.phoneNo,
       })),

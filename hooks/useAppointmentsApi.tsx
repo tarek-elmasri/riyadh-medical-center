@@ -1,12 +1,13 @@
 "use client";
 
 import { getAppointmentsByDoctorId } from "@/app/actions/getAppointments";
-import { AppointmentsWithDoctorAndPatient } from "@/app/types";
+import { AppointmentWithDoctorAndPatient } from "@/app/types";
 import { useState } from "react";
 
 const useAppointmentsApi = () => {
-  const [appointments, setAppointments] =
-    useState<AppointmentsWithDoctorAndPatient>([]);
+  const [appointments, setAppointments] = useState<
+    AppointmentWithDoctorAndPatient[]
+  >([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = async ({
