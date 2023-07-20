@@ -32,6 +32,7 @@ export const getAppointmentsByDoctorId = async ({
     include: {
       doctor: true,
       patient: true,
+      schedule: true,
     },
   });
 };
