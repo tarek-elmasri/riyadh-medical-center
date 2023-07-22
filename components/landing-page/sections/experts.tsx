@@ -44,9 +44,27 @@ const Experts = () => {
             {/* doctors cards */}
 
             <Expert img={doctor} name="د/ لينا شابو" title="اخصائية الباطنية" />
-            <Expert img={doctor} name="د/ لينا شابو" title="اخصائية الباطنية" />
-            <Expert img={doctor} name="د/ لينا شابو" title="اخصائية الباطنية" />
-            <Expert img={doctor} name="د/ لينا شابو" title="اخصائية الباطنية" />
+            <Expert
+              img={doctor}
+              name="د/ محمد البكر"
+              title="أخصائي الأنف و الأذن و الحنجرة"
+            />
+            <Expert
+              img={doctor}
+              name="د/ زياد القيسي"
+              title="أخصائي طب الأسنان"
+            />
+            <Expert
+              img={doctor}
+              name="د/ عيسى رفيق"
+              title="أخصائي طب الأطفال"
+            />
+            <Expert img={doctor} name="د/ حلا أحمد" title="أخصائية طب العيون" />
+            <Expert
+              img={doctor}
+              name="د/ مي محمد"
+              title="أخصائية أمراض النساء"
+            />
           </div>
         </Container>
       </div>
