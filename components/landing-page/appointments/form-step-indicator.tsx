@@ -14,13 +14,13 @@ const FormStepIndicator = () => {
           <div
             key={`dot-${i}`}
             className={cn(
-              "w-6 h-6 border-4 rounded-full border-sky-600 transition",
-              i < currentStep ? " bg-neutral-100" : "bg-slate-800"
+              "w-6 h-6 border-4 rounded-full border-indigo-800 transition",
+              i < currentStep ? " bg-indigo-800" : "bg-white"
             )}
           />
         ))}
       </div>
-      <div className="absolute mx-16 inset-0 z-10  h-[2px] bg-sky-600  top-[50%] translate-y-[-50%]" />
+      <div className="absolute mx-16 inset-0 z-10  h-[2px] bg-indigo-800  top-[50%] translate-y-[-50%]" />
     </div>
   );
 };

@@ -72,7 +72,7 @@ const AppointmentStepOne: React.FC<{ clinics: ClinicsWithDoctors }> = ({
           onSubmit={form.handleSubmit(handleNext)}
           className="flex flex-col gap-6 h-full p-6"
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-center">
+          <h2 className="text-2xl md:text-3xl text-indigo-950 font-bold text-center">
             اختر العيادة
           </h2>
           <Separator />
@@ -91,10 +91,8 @@ const AppointmentStepOne: React.FC<{ clinics: ClinicsWithDoctors }> = ({
                       }}
                       defaultValue={field.value}
                     >
-                      <FormLabel className="text-lg font-bold">
-                        العيادة:
-                      </FormLabel>
-                      <FormControl className="text-md">
+                      <FormLabel>العيادة:</FormLabel>
+                      <FormControl>
                         <SelectTrigger className="flex-row-reverse">
                           <SelectValue placeholder="العيادة" />
                         </SelectTrigger>
@@ -125,10 +123,8 @@ const AppointmentStepOne: React.FC<{ clinics: ClinicsWithDoctors }> = ({
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <FormLabel className="text-lg font-bold">
-                        الطبيب:
-                      </FormLabel>
-                      <FormControl className="text-md">
+                      <FormLabel>الطبيب:</FormLabel>
+                      <FormControl>
                         <SelectTrigger className="flex-row-reverse">
                           <SelectValue placeholder="الطبيب" />
                         </SelectTrigger>

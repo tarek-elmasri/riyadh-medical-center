@@ -31,8 +31,8 @@ const AppointmentForm = ({ clinics }: AppointmentFormProps) => {
 
   return (
     <div
-      className="overflow-x-hidden h-[30rem] rounded-lg border-2 border-sky-400 shadow-md 
-     shadow-sky-400 bg-slate-800 text-neutral-200 primary-blue"
+      className="overflow-x-hidden h-[25rem] rounded-lg border-2  shadow-xl
+       "
     >
       {currentStep > 0 && steps[currentStep - 1]}
     </div>
