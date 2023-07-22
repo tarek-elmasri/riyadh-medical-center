@@ -22,10 +22,9 @@ export const appointmentSchema = z.object({
 // TODO: fix date issues
 export const serverAppointmentSchema = z.object({
   doctorId: z.string().min(1, { message: "حقل مطلوب" }),
-  date: z
-    .date({ required_error: "حقل مطلوب" })
-    // .min(standardDate(serverTodayInKSA()))
-    .refine((date) => !isFriday(date), { message: "لا يمكن حجز يوم جمعة" }),
+  date: z.date({ required_error: "حقل مطلوب" }),
+  // .min(standardDate(serverTodayInKSA()))
+  // .refine((date) => !isFriday(date), { message: "لا يمكن حجز يوم جمعة" }),
   patientName: z.string().min(1, { message: "حقل مطلوب" }),
   phoneNo: z
     .string()
