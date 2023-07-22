@@ -1,25 +1,44 @@
 import NavbarLinks from "./navbar-links";
 import MobileNav from "@/components/landing-page/mobile-nav";
+import logo from "@/assets/logo.png";
+import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="h-24  bg-slate-800 shadow-md">
-      <div className="flex h-full justify-between md:justify-start items-center">
-        <div className="navbar-triangle h-full w-1/3 pr-4 flex items-center md:justify-center md:bg-sky-700">
+    <div className="bg-white h-24 shadow-md shadow-neutral-200">
+      <div className="w-full max-w-6xl mx-auto h-full flex flex-col justify-center px-6">
+        <div className="flex justify-start items-center">
           {/* mobile devices toggle menu */}
           <div className="md:hidden">
             <MobileNav />
           </div>
+
           {/* logo */}
-          <p className="mt-2 font-bold text-sky-500 md:text-slate-800 text-2xl md:text-3xl ">
-            RMC
-          </p>
+          <div>
+            <Image src={logo} alt="RMC" className="w-24 object-contain" />
+          </div>
+
+          <ul className="mx-auto hidden md:flex items-center justify-start gap-12">
+            <NavbarLinks />
+          </ul>
+
+          {/* CTA */}
+          <div className="mr-auto md:mr-0">
+            <Link
+              href="/appointments"
+              className="mr-12 p-3 rounded-lg bg-indigo-800 hover:bg-indigo-700/95 flex items-center text-neutral-200 hover:text-white transition font-semibold shadow-md shadow-neutral-200 "
+            >
+              احجز موعد
+            </Link>
+          </div>
         </div>
-        <div className=" md:block md:flex-1 md:px-6">
+
+        {/* <div className=" md:block md:flex-1 md:px-6">
           <ul className="w-full">
             <NavbarLinks />
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );

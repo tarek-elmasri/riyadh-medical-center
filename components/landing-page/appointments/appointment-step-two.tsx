@@ -164,7 +164,7 @@ const AppointmentStepTwo: React.FC = () => {
 
             {isSchedulesLoading && (
               <div className="flex justify-center">
-                <Loader size={18} color="white" className="mt-6" />
+                <Loader size={18} color="blue" className="mt-3" />
               </div>
             )}
 

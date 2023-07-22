@@ -36,7 +36,7 @@ const AppointmentSummary: React.FC = () => {
     return (
       <div className="grid h-full place-items-center">
         <div className="flex flex-col items-center">
-          <Loader color="white" />
+          <Loader color="blue" />
           <p>جاري حجز الموعد. الرجاء الانتظار ...</p>
         </div>
       </div>
@@ -68,16 +68,17 @@ const AppointmentSummary: React.FC = () => {
       transition={{ duration: 0.3 }}
       className="h-full"
     >
-      <div className="flex flex-col h-full p-6 gap-6">
+      <div className="flex flex-col h-full p-6 gap-3">
         <h2 className="text-2xl md:text-3xl font-bold text-center">
           بيانات الحجز
         </h2>
-        <p>العيادة : {data.clinicName}</p>
-        <p>الطبيب : {data.doctorName}</p>
-        <p>التاريخ : {format(data.date, "dd/MM/yyyy")}</p>
-        <p>الموعد : {data.scheduleLabel}</p>
-        <p>الاسم : {data.patientName}</p>
-        <p>رقم الهاتف : {data.phoneNo}</p>
+        <Separator className="my-3" />
+        <p className="text-sm">العيادة : {data.clinicName}</p>
+        <p className="text-sm">الطبيب : {data.doctorName}</p>
+        <p className="text-sm">التاريخ : {format(data.date, "dd/MM/yyyy")}</p>
+        <p className="text-sm">الموعد : {data.scheduleLabel}</p>
+        <p className="text-sm">الاسم : {data.patientName}</p>
+        <p className="text-sm">رقم الهاتف : {data.phoneNo}</p>
 
         {/* form navigation */}
         <div className="mt-auto">

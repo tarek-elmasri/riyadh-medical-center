@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
-const MotionWrapper = (Children: () => JSX.Element, classNames?: string) => {
+const motionWrapper = (Children: () => JSX.Element, classNames?: string) => {
   const Component = () => {
     return (
       <motion.div
@@ -20,4 +20,4 @@ const MotionWrapper = (Children: () => JSX.Element, classNames?: string) => {
   return Component;
 };
 
-export default MotionWrapper;
+export default motionWrapper;

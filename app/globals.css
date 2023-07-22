@@ -78,12 +78,11 @@ body,
   }
 }
 
-.primary-blue{
-  /* color: hsl(220, 74%, 49%); */
-  --background: rgb(30 41 59);
-  --primary: 220 74% 49%;
-  --accent-foreground: 220 74% 49%;
+
+.svg-icon > svg{
+  @apply h-6 w-6
 }
+
 
 .centered-shadow {
   /* --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); */

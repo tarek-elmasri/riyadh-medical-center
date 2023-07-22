@@ -7,24 +7,24 @@ const useRoutes = () => {
 
   const routes = [
     {
-      href: "/#aboutUs",
-      label: "من نحن",
-      active: pathname === "/",
+      href: "/#aboutus",
+      label: "نبذة عنا",
+      active: pathname === "/#aboutus",
     },
     {
-      href: "/#services",
-      label: "خدماتنا",
-      active: pathname === "/a",
-    },
-    {
-      href: "#",
+      href: "/#clinics",
       label: "العيادات",
-      active: pathname === "/b",
+      active: pathname === "/#clinics",
     },
     {
-      href: "#",
-      label: "جديدنا",
-      active: pathname === "/c",
+      href: "/#experts",
+      label: "الأطباء",
+      active: pathname === "/#experts",
+    },
+    {
+      href: "/#insurance",
+      label: "النأمين",
+      active: pathname === "/@insurance",
     },
   ];
 
