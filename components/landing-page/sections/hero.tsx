@@ -40,7 +40,7 @@ const Hero = () => {
             رعاية طبية لمرضانا
           </motion.p>
           <Link
-            href="#"
+            href="/appointments"
             className="p-3 rounded-lg bg-indigo-800 hover:bg-indigo-700/95 flex items-center text-neutral-200 hover:text-white transition font-semibold shadow-md shadow-indigo-700 "
           >
             احجز موعد
@@ -68,7 +68,7 @@ const Hero = () => {
             رعاية طبية لمرضانا
           </motion.p>
           <Link
-            href="#"
+            href="/appointments"
             className="p-3 rounded-lg bg-indigo-800 hover:bg-indigo-700/95 flex items-center text-neutral-200 hover:text-white transition font-semibold shadow-md shadow-indigo-700 "
           >
             احجز موعد
