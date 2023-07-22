@@ -34,10 +34,10 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="max-w-sm font-semibold text-indigo-950"
           >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia,
-            labore sapiente aliquam quisquam vitae aperiam laudantium esse illo
-            tenetur saepe, incidunt velit. Labore unde quaerat voluptatum id
-            maiores, fuga veniam?
+            مستوصف الرياض الطبي هو عيادة متعددة التخصصات تقدم الرعاية الأكثر
+            شمولا في الرياض, مدعوما بأحدث التقنيات و الموظفين الطبيين ذوي الخبرة
+            . مع فريق متنوع دائما على استعداد لمواجهة التحديات و تقديم افضل
+            رعاية طبية لمرضانا
           </motion.p>
           <Link
             href="#"

@@ -23,7 +23,7 @@ const ClinicCard: React.FC<ClinicCardProps> = ({
   title,
   description,
 }) => (
-  <div className="p-6 w-72 h-96 bg-white shadow-md  rounded-lg flex flex-col justify-center items-center gap-6 hover:scale-105 transition duration-500 hover:bg-indigo-700 group">
+  <div className="px-6 py-12 w-72 h-[25rem] bg-white shadow-md  rounded-lg flex flex-col justify-start items-center gap-12 hover:scale-105 transition duration-500 hover:bg-indigo-700 group">
     <div className="svg-icon group-hover:text-white transition duration-500">
       <Icon />
     </div>
@@ -49,56 +49,39 @@ const Clinics = () => {
           {/* Clinics */}
           <ClinicCard
             icon={FaFemale}
-            title="عيادة النساء"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Obcaecati quas, cumque eum amet praesentium ratione error esse qui
-              aliquid cum eligendi, odit maiores facilis id numquam, quae
-              debitis neque officia?"
+            title="أمراض النساء"
+            description="استفد من أفضل النتائج في جميع حالات أمراض النساء بأقصى قدر من الرعابة المتميزة."
           />
 
           <ClinicCard
             icon={FaStethoscope}
-            title="عيادة الباطنية "
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Obcaecati quas, cumque eum amet praesentium ratione error esse qui
-              aliquid cum eligendi, odit maiores facilis id numquam, quae
-              debitis neque officia?"
+            title="الطب الباطني "
+            description="احصل على التحليل الأكثر شمولا لتطمئن على حالتك الحية من قبل طبيب متمرس."
           />
 
           <ClinicCard
             icon={FaTooth}
-            title="عيادة الأسنان"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Obcaecati quas, cumque eum amet praesentium ratione error esse qui
-              aliquid cum eligendi, odit maiores facilis id numquam, quae
-              debitis neque officia?"
+            title="طب الأسنان"
+            description="نحن نقدم خدمات رعاية أسنان كاملة من تنظيف الأسنان الروتيني إلى تقويم الأسنان المتقدم.
+            "
           />
 
           <ClinicCard
             icon={FaBaby}
-            title="عيادة الأطفال"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Obcaecati quas, cumque eum amet praesentium ratione error esse qui
-              aliquid cum eligendi, odit maiores facilis id numquam, quae
-              debitis neque officia?"
+            title="طب الأطفال"
+            description="احصل على الرعاية الأكثر خبرة و نصائح الخبراء لطفلك و تأكد من صحة نموه."
           />
 
           <ClinicCard
             icon={BsFillEarFill}
-            title="عيادة الأنف و الأذن و الحنجرة"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Obcaecati quas, cumque eum amet praesentium ratione error esse qui
-              aliquid cum eligendi, odit maiores facilis id numquam, quae
-              debitis neque officia?"
+            title="الأنف و الأذن و الحنجرة"
+            description="يهدف قسم الأنف و الأذن و الحنجرة إلى تقديم رعاية طبية عالية الجودة و تقديم العلاج المناسب للمرضى."
           />
 
           <ClinicCard
             icon={FaEye}
-            title="عيادة العيون"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Obcaecati quas, cumque eum amet praesentium ratione error esse qui
-              aliquid cum eligendi, odit maiores facilis id numquam, quae
-              debitis neque officia?"
+            title="طب العيون"
+            description="احصل على تشخيصات و رعاية متخصصة لمجموعة واسعة من حالات العين البسيطة و المعقدة. تجعلنا تقنيتنا المتقدمة و أطباؤنا من ذوي الخبرة العيادة الأكثر تفصيلا في المنطقة."
           />
         </div>
       </Container>

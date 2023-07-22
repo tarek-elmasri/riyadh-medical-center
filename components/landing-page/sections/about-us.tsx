@@ -24,10 +24,11 @@ const AboutUs = () => {
               transition={{ duration: 0.5 }}
               className="text-indigo-900"
             >
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure ex
-              nobis exercitationem pariatur tempore, porro nesciunt libero hic
-              dolorem illum recusandae repudiandae deleniti, a voluptate
-              excepturi, consectetur voluptates qui ducimus.
+              إن إدارة مركز الرياض الطبي لم تألوا جهداً وعلى مدار 30 عاماً في
+              تقديم نموذج طبي متميز للخدمات الطبية في كافة التخصصات الطبية بحيث
+              يجد المراجع كل ما يصبوا اليه من تخصصات طبية في مكان واحد لرفع
+              المعاناة على المريض والحصول على خدماته الطبية المزودة بأحدث
+              الأجهزة الطبية والتقنيات الطبية الحديثة. .
             </motion.p>
 
             <motion.p
@@ -35,10 +36,9 @@ const AboutUs = () => {
               transition={{ duration: 0.5 }}
               className="text-indigo-900"
             >
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure ex
-              nobis exercitationem pariatur tempore, porro nesciunt libero hic
-              dolorem illum recusandae repudiandae deleniti, a voluptate
-              excepturi, consectetur voluptates qui ducimus.
+              ولقد كانت جودة الرعاية الطبية هي اساس مبدأنا وتميزنا على مدار
+              ثلاثون عاماً أثمر ذلك على استقبال مجمعنا على اكثر من ألف مراجع
+              يومياً لتلقي الرعاية الصحية.
             </motion.p>
 
             <motion.p
@@ -46,10 +46,11 @@ const AboutUs = () => {
               transition={{ duration: 0.5 }}
               className="text-indigo-900"
             >
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure ex
-              nobis exercitationem pariatur tempore, porro nesciunt libero hic
-              dolorem illum recusandae repudiandae deleniti, a voluptate
-              excepturi, consectetur voluptates qui ducimus.
+              نستخدم معرفتنا الفائقة والتشخيصات المتقدمة لعلاج مجموعة واسعة من
+              المشكلات الصحية. في مستوصف الرياض الطبي، نأخذ مرضانا ليكونوا محور
+              كل ما نقوم به. يعمل طاقمنا الطبي معًا لتوفير رعاية جماعية
+              استثنائية وشاملة. الرعاية الشخصية والاحترافية هي مفتاحنا الذي يعزز
+              الشفاء العاجل، ويعزز صحتك ورفاهيتك بشكل عام.
             </motion.p>
           </div>
         </div>
