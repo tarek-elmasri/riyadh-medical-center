@@ -78,6 +78,12 @@ body,
   }
 }
 
+
+.svg-icon > svg{
+  @apply h-6 w-6
+}
+
+
 .primary-blue{
   /* color: hsl(220, 74%, 49%); */
   --background: rgb(30 41 59);

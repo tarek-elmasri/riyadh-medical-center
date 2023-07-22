@@ -1,88 +1,81 @@
 "use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade } from "swiper";
+
+import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
-import img1 from "@/assets/pexels-evg-kowalievska-1170979.jpg";
-import img2 from "@/assets/pexels-shedrack-salami-16903641.jpg";
-import { cn } from "@/lib/utils";
-import CTA from "@/components/landing-page/CTA";
 
-// const imgSrc = [img1, img2];
-
-const data = [
-  {
-    imgSrc: img1,
-    header: "خدمات صحية مميزة برعاية أطباء متخصصين",
-    description: `مجموعة مختارة من الأطباء ذوي الخبرة في مختلف التخصصات لتقديم الرعاية الصحية المناسبة`,
-  },
-  {
-    imgSrc: img2,
-    header: "معامل مزودة بأحدث الطرازات العالمية",
-    description: `مختبرات عالية الدقة مع باقات خاصة تناسب احتياجاتك بأيدى
-    متخصصين في مختلف التحاليل لتحصل على نتائجك الفورية`,
-  },
-];
+import Link from "next/link";
 
 const Hero = () => {
-  const router = useRouter();
   return (
-    <>
-      <header
-        className="w-full overflow-hidden bg-white"
-        style={{ height: "var(--hero-height)" }}
-      >
-        <Swiper
-          modules={[Autoplay, EffectFade]}
-          autoplay={{ delay: 4000 }}
-          effect="fade"
-          slidesPerView={1}
-        >
-          {data.map((frame, i) => (
-            <SwiperSlide key={i + "bc"}>
-              <div
-                className="relative w-full bg-slate-500"
-                style={{ height: "var(--hero-height" }}
-              >
-                <Image
-                  src={frame.imgSrc}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 100%)"
-                  alt="image"
-                />
-                <div className="absolute z-1 inset-0 bg-slate-900 opacity-50" />
-                <div
-                  className={cn(
-                    "absolute inset-0 flex flex-col h-full md:mx-32 items-center justify-center",
-                    i % 2 === 0 ? "md:items-start" : "md:items-end"
-                  )}
-                >
-                  <div className="max-w-xs md:max-w-sm p-8 bg-slate-900/70 rounded-lg">
-                    <h2 className="text-sky-400 text-xl md:text-3xl font-bold">
-                      {frame.header}
-                    </h2>
-                    <p className="mt-4 text-md md:text-md text-neutral-200 font-bold">
-                      {frame.description}
-                    </p>
-                    <CTA
-                      className="mt-20 w-full"
-                      onClick={() => router.push("/appointments")}
-                    >
-                      {" "}
-                      احجز موعدك
-                    </CTA>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </header>
-    </>
+    <header className="relative" id="main">
+      <div className="relative w-full max-h-[35rem] flex overflow-hidden">
+        <Image
+          src="https://res.cloudinary.com/dhcedk2iy/image/upload/v1689197111/RMC/wfej0mzeimnwkeznlpd8.jpg"
+          alt="img"
+          width={1000}
+          height={1000}
+          className="w-full object-cover"
+        />
+
+        {/* larg screen inside content */}
+        <div className="hidden z-10 xl:flex flex-col items-start justify-center gap-6 p-20 absolute top-[-10rem] bottom-[-10rem] left-[-20rem] w-[70%] bg-amber-500 rounded-full overflow-hidden">
+          <motion.h1
+            whileInView={{ opacity: [0, 1], y: [100, 0] }}
+            transition={{ duration: 0.5 }}
+            className="font-bold text-4xl text-indigo-950"
+          >
+            مركز الرياض الطبي
+          </motion.h1>
+          <motion.p
+            whileInView={{ opacity: [0, 1], y: [100, 0] }}
+            transition={{ duration: 0.5 }}
+            className="max-w-sm font-semibold text-indigo-950"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia,
+            labore sapiente aliquam quisquam vitae aperiam laudantium esse illo
+            tenetur saepe, incidunt velit. Labore unde quaerat voluptatum id
+            maiores, fuga veniam?
+          </motion.p>
+          <Link
+            href="#"
+            className="p-3 rounded-lg bg-indigo-800 hover:bg-indigo-700/95 flex items-center text-neutral-200 hover:text-white transition font-semibold shadow-md shadow-indigo-700 "
+          >
+            احجز موعد
+          </Link>
+        </div>
+      </div>
+
+      <div className="xl:hidden overflow-hidden h-[380px] relative top-[-80px] md:top-[-180px] ">
+        <div className=" w-[200vw] h-[100vw] rounded-tr-[110vw] rounded-tl-[110vw] bg-amber-500 relative left-[50%] flex flex-col items-center justify-start gap-6 p-16">
+          <motion.h1
+            whileInView={{ opacity: [0, 1], y: [100, 0] }}
+            transition={{ duration: 0.5 }}
+            className="font-bold text-4xl text-indigo-950"
+          >
+            مركز الرياض الطبي
+          </motion.h1>
+          <motion.p
+            whileInView={{ opacity: [0, 1], y: [100, 0] }}
+            transition={{ duration: 0.5 }}
+            className="max-w-sm font-semibold text-indigo-950 text-center"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia,
+            labore sapiente aliquam quisquam vitae aperiam laudantium esse illo
+            tenetur saepe, incidunt velit. Labore unde quaerat voluptatum id
+            maiores, fuga veniam?
+          </motion.p>
+          <Link
+            href="#"
+            className="p-3 rounded-lg bg-indigo-800 hover:bg-indigo-700/95 flex items-center text-neutral-200 hover:text-white transition font-semibold shadow-md shadow-indigo-700 "
+          >
+            احجز موعد
+          </Link>
+        </div>
+      </div>
+    </header>
   );
 };
 

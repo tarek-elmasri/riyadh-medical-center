@@ -8,7 +8,7 @@ import { Activity, Pill, Stethoscope } from "lucide-react";
 
 const Services = () => {
   return (
-    <div className="bg-slate-800">
+    <div className="bg-slate-700">
       <Container id="services">
         <Title name="خدماتنا" classNames="text-sky-400" />
 
@@ -23,7 +23,7 @@ const Services = () => {
               whileInView={{ opacity: [0, 1], y: [100, 0] }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <div className="flex flex-col justify-center items-center bg-slate-700 rounded-md w-64 p-6 gap-8 hover:bg-sky-800 shadow-sky-400 trnasition cursor-default hover:scale-105 transition duration-500 group">
+              <div className="flex flex-col justify-center items-center bg-slate-800 rounded-md w-64 p-6 gap-8 hover:bg-sky-800 shadow-sky-400 trnasition cursor-default hover:scale-105 transition duration-500 group">
                 <div className="w-16 aspect-square rounded-full bg-slate-800 grid place-items-center shadow-[0_0px_12px_0px_#38bdf8] shadow-sky-400">
                   <Activity
                     size={30}
@@ -42,7 +42,7 @@ const Services = () => {
               whileInView={{ opacity: [0, 1], y: [100, 0] }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <div className="flex flex-col  justify-center items-center bg-slate-700 rounded-md w-64 p-6 gap-8 hover:bg-sky-800 trnasition cursor-default hover:scale-105 transition duration-500 group">
+              <div className="flex flex-col  justify-center items-center bg-slate-800 rounded-md w-64 p-6 gap-8 hover:bg-sky-800 trnasition cursor-default hover:scale-105 transition duration-500 group">
                 <div className="w-16 aspect-square rounded-full bg-slate-800 grid place-items-center shadow-[0_0px_12px_0px_#38bdf8] shadow-sky-400">
                   <Pill
                     size={30}
@@ -61,7 +61,7 @@ const Services = () => {
               whileInView={{ opacity: [0, 1], y: [100, 0] }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <div className="flex  flex-col justify-center items-center bg-slate-700 rounded-md w-64 p-6 gap-8 hover:bg-sky-800 trnasition cursor-default hover:scale-105 transition duration-500 group">
+              <div className="flex  flex-col justify-center items-center bg-slate-800 rounded-md w-64 p-6 gap-8 hover:bg-sky-800 trnasition cursor-default hover:scale-105 transition duration-500 group">
                 <div className="w-16 aspect-square rounded-full bg-slate-800 grid place-items-center shadow-[0_0px_12px_0px_#38bdf8] shadow-sky-400">
                   <Stethoscope
                     size={30}

@@ -6,8 +6,8 @@ const Container = ({
   id?: string;
 }) => {
   return (
-    <div id={id} className="flex flex-col w-full max-w-6xl mx-auto">
-      <div className="p-10 md:p-20">{children}</div>
+    <div id={id} className="w-full max-w-6xl mx-auto">
+      {children}
     </div>
   );
 };
